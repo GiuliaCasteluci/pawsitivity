@@ -1,0 +1,28 @@
+/* ul: nav bar links*/
+.options {
+    display: flex;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bolder;
+    flex-grow: 1;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  /* li: each category name inside the nav bar  */
+  .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    min-width: 120px;
+    font-size: 20px;
+  }
+  
+  
