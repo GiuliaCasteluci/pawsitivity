@@ -1,38 +1,24 @@
+import logo from './logo.svg';
 import './App.css';
-import styled from 'styled-components';
-import React from 'react';
-import Home from './components/pages/Home';
-import { Route, Routes } from "react-router-dom";
-import Register from "./components/pages/Register";
-import Login from "./components/pages/Login"
-import useAuth from "./hooks/useAuth";
-
-
-//background of the page
-const AppContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(90deg, #002F52 35%, #326589);
-
-`;
-
-const Private = ({ Item }) => {
-  const { signed } = useAuth();
-
-  return signed > 0 ? <Item /> : <Login />;
-};
 
 function App() {
   return (
-    <AppContainer>
-        <Routes>
-          <Route exact path="/home" element={<Private Item={Home} />} />
-          <Route path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route path="*" element={<Home />} /> 
-          the user will be redirected to the login page  with path="*"  
-        </Routes>
-    </AppContainer>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
