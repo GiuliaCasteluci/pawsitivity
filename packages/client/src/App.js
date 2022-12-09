@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import PetForm from './components/E.Surrender';
 import EmergencyPage from './components/Emergency/Emergency';
