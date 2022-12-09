@@ -6,7 +6,7 @@ import styled from 'styled-components';
 // components are written with upper case letters
 //HeaderContainer involves  the entire heading 
 const HeaderContainer = styled.header`
-
+image.png
 
 `
 
