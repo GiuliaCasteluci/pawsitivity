@@ -17,5 +17,8 @@
   "workspaces": [
     "packages/server",
     "packages/client"
-  ]
+  ],
+  "dependencies": {
+    "react-router-dom": "^6.4.5"
+  }
 }
