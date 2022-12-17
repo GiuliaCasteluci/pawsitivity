@@ -6,12 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
 import useAuth from "./hooks/useAuth";
-<<<<<<< HEAD
 import SwipePage from './components/pages/Swipe';
-=======
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
->>>>>>> junesbranch
 
 
 //background of the page
