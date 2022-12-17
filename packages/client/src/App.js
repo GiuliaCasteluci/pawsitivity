@@ -9,6 +9,9 @@ import useAuth from "./hooks/useAuth";
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import SwipePage from './components/pages/swipe';
+import EmergencyPage from './components/pages/Emergency/EmergencyPage';
+import PetForm from './components/pages/PetForm/petForm';
+
 
 
 //background of the page
