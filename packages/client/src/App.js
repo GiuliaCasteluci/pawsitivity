@@ -10,6 +10,9 @@ import SwipePage from './components/pages/Swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import SwipePage from './components/pages/Swipe';
+import SwipePage from './components/pages/Swipe';
+import EmergencyPage from './components/pages/Emergency/EmergencyPage';
+import PetForm from './components/pages/PetForm/petForm';
 
 
 //background of the page
