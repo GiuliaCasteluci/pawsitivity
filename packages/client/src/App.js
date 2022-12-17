@@ -8,6 +8,7 @@ import Login from "./components/pages/Login"
 import useAuth from "./hooks/useAuth";
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
+import SwipePage from './components/pages/swipe';
 
 
 //background of the page
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
+          <Route path="/adopt" element={<SwipePage />} />
           the user will be redirected to the login page  with path="*"  
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
