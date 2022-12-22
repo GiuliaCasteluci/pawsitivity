@@ -9,6 +9,9 @@ import paws from './PawsLogo.png'
 import heart from './heart.png'
 import cancel from './cancel.png'
 import glass from './mag.png'
+import {Link} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function SwipePage() { 
@@ -26,16 +29,20 @@ function SwipePage() {
         setArray([...myArray, newDog])
       }
   
-    const handleKeyDown = (event) => {
-      if(event.key === 'ArrowLeft' || event.target.id === 'next'){
-        setType(event)
-        setSkip(5)
-      } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-        addPhoto()
-        setType(event)
-        setSkip(5)
-      } 
-    };
+      const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
+    
+      const handleKeyDown = (event) => {
+        if(event.key === 'ArrowLeft' || event.target.id === 'next'){
+          setType(event)
+          setSkip(5)
+        } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
+          addPhoto()
+          notify()
+          setType(event)
+          setSkip(5)
+        } 
+        
+      };
   
   
       useEffect(() => {
@@ -51,6 +58,7 @@ function SwipePage() {
 
     <span className="page">
       <Navbar className="nav" variant="light">
+      <ToastContainer></ToastContainer>
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -60,15 +68,15 @@ function SwipePage() {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Nav.Link className="ps-5" to='localhost:3000'>Home</Nav.Link>
+          <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
           <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Swipe</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Liked Pets
+              <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
+              <NavDropdown.Item href="">
+                Liked Pets ({myArray.length})
               </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link>Surrender</Nav.Link>
-          <Nav.Link>Resources</Nav.Link>
+          <Nav.Link href="/emergency">Surrender</Nav.Link>
+          <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
         <div id="carouselExampleControls" className="carousel position-static mt-5" data-bs-ride="carousel" tabIndex={0} onKeyDown={handleKeyDown}>
