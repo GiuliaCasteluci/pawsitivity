@@ -3,13 +3,14 @@ import Header from "../Header";
 import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Carousel, CarouselItem, Col, Container , Nav, Navbar, Row, NavDropdown, Card} from "react-bootstrap";
+import { Button, Carousel, CarouselItem, Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
 import Logo from "../../Logo";
 import paws from './PawsLogo.png'
 import heart from './heart.png'
 import cancel from './cancel.png'
 import glass from './mag.png'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function SwipePage() { 
     const [type, setType] = useState(null)
@@ -22,22 +23,25 @@ function SwipePage() {
  
   
     const addPhoto = () => { 
-      const newDog = photos.message
-        setArray([...myArray, newDog])
+      const newPet = photos.message
+        setArray([...myArray, newPet])
       }
-  
+      
+    const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
+    
     const handleKeyDown = (event) => {
       if(event.key === 'ArrowLeft' || event.target.id === 'next'){
         setType(event)
         setSkip(5)
       } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
         addPhoto()
+        notify()
         setType(event)
         setSkip(5)
       } 
+      
     };
-  
-  
+
       useEffect(() => {
         fetch("https://dog.ceo/api/breeds/image/random")
         .then(res => res.json())
@@ -50,6 +54,7 @@ function SwipePage() {
   return (
 
     <span className="page">
+      <ToastContainer></ToastContainer>
       <Navbar className="nav" variant="light">
         <Container>
           <Navbar.Brand href="#home">
@@ -78,7 +83,7 @@ function SwipePage() {
             <Col>
               <Card style={{width: '500px'}}>
                 <Card.Img src={photos.message} className="d-block square mt-2" height="500" alt={photos.message} />
-                  <Card.Title>Mike</Card.Title>
+                  <Card.Title>{photos.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
               </Card>
             </Col>
