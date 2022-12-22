@@ -9,6 +9,7 @@ import paws from './PawsLogo.png'
 import heart from './heart.png'
 import cancel from './cancel.png'
 import glass from './mag.png'
+import {Link} from 'react-router-dom'
 
 
 function SwipePage() { 
@@ -60,15 +61,15 @@ function SwipePage() {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Nav.Link className="ps-5" to='localhost:3000'>Home</Nav.Link>
+          <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
           <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Swipe</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
+              <NavDropdown.Item href="">
                 Liked Pets
               </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link>Surrender</Nav.Link>
-          <Nav.Link>Resources</Nav.Link>
+          <Nav.Link href="/emergency">Surrender</Nav.Link>
+          <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
         <div id="carouselExampleControls" className="carousel position-static mt-5" data-bs-ride="carousel" tabIndex={0} onKeyDown={handleKeyDown}>
