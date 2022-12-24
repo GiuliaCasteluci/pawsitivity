@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { API_URL, DB_URL } from './configs';
 import routes from './routes';
+// import {Server} from 
 
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
