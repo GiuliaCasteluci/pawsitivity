@@ -3,7 +3,7 @@ const { ObjectId } = mongoose.Schema.Types
 
 const petSchema = new mongoose.Schema(
     {
-        name: {
+        type: {
             type: String,
             required: true,
           },
@@ -11,7 +11,7 @@ const petSchema = new mongoose.Schema(
             type: String,
             required: true,
           },
-          species: {
+          name: {
             type: String,
             required: true,
           },
@@ -19,17 +19,13 @@ const petSchema = new mongoose.Schema(
             type: Number,
             required: true,
           },
-          breed: {
+          gender: {
             type: String,
             required: true,
           },
           description: {
             type: String,
             required: false,
-          },
-          gender: {
-            type: Boolean,
-            required: true,
           },
           petPic: {
                 type: String,
@@ -39,6 +35,6 @@ const petSchema = new mongoose.Schema(
         
 
 
-const Pet = mongoose.model('Product', productSchema)
+const Pet = mongoose.model('Pet', productSchema)
 
 export default Pet
