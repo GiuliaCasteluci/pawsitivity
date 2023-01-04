@@ -1,10 +1,8 @@
 import React from "react";
-import Header from "../Header";
 import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Carousel, CarouselItem, Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
-import Logo from "../../Logo";
+import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
 import paws from './PawsLogo.png'
 import heart from './heart.png'
 import cancel from './cancel.png'
