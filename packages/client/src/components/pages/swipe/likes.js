@@ -2,12 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
+import {Col, Container , Nav, Navbar, Row, NavDropdown, Card,} from "react-bootstrap";
 import paws from './PawsLogo.png'
-import heart from './heart.png'
-import cancel from './cancel.png'
-import glass from './mag.png'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 function LikesPage() { 
@@ -70,7 +67,7 @@ function LikesPage() {
           <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
-        <div>
+        <div className="mt-5">
         <div>
         <Container>
             <Row>
@@ -133,7 +130,7 @@ function LikesPage() {
         </Container>
         </div>
         </div>
-    </span>
+      </span>
 
   );
 }
