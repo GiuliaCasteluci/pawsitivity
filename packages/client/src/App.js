@@ -9,6 +9,7 @@ import useAuth from "./hooks/useAuth";
 import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
+import LikesPage from './components/pages/swipe/likes';
 
 
 //background of the page
@@ -34,7 +35,8 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
           <Route path="/adopt" element={<SwipePage />} />
-          the user will be redirected to the login page  with path="*"  
+          <Route path="/likes" element={<LikesPage/>} />
+                    the user will be redirected to the login page  with path="*"  
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
         </Routes>
