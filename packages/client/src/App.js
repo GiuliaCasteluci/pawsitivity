@@ -9,11 +9,12 @@ import useAuth from "./hooks/useAuth";
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import SwipePage from './components/pages/swipe'
-import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import "./App.css";
 //background of the page
 const AppContainer = styled.div`
