@@ -1,6 +1,7 @@
 import Logo from '../../Logo'
 import HeaderOptions from '../HeaderOptions';
 // import HeaderIcons from '../HeaderIcons';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // components are written with upper case letters
@@ -15,7 +16,9 @@ function Header() {
        <HeaderContainer>
             <Logo />
             <HeaderOptions />
-            {/* <HeaderIcons /> */}
+            <Link to="/login">&nbsp;Sign In</Link>
+        <Link to='/petForm'>&nbsp;Pet Form</Link>
+        <Link to='/emergency'>&nbsp;Emergency</Link>
        </HeaderContainer>
     )
 }
