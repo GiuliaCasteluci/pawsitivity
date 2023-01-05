@@ -1,50 +1,45 @@
-import React from "react";
-import Header from "../Header";
-import { useState } from "react";
+import React, {useState} from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Carousel, CarouselItem, Col, Container , Nav, Navbar, Row, NavDropdown, Card} from "react-bootstrap";
-import Logo from "../../Logo";
+import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
 import paws from './PawsLogo.png'
 import heart from './heart.png'
 import cancel from './cancel.png'
 import glass from './mag.png'
-import {Link} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import LikesPage from "./likes";
 
 function SwipePage() { 
     const [type, setType] = useState(null)
-    const [myArray, setArray] = useState([])
+    const [likes, setArray] = useState([])
     const [photos, setPhotos] = useState({
       dog: "", 
-      adopted: myArray,
+      adopted: likes,
       })
     const [skip, setSkip] = useState(5)
  
   
     const addPhoto = () => { 
-      const newDog = photos.message
-        setArray([...myArray, newDog])
+      const newPet = photos.message
+        setArray([...likes, newPet])
       }
-  
-      const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
+      
+    const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
     
-      const handleKeyDown = (event) => {
-        if(event.key === 'ArrowLeft' || event.target.id === 'next'){
-          setType(event)
-          setSkip(5)
-        } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-          addPhoto()
-          notify()
-          setType(event)
-          setSkip(5)
-        } 
-        
-      };
-  
-  
+    const handleKeyDown = (event) => {
+      if(event.key === 'ArrowLeft' || event.target.id === 'next'){
+        setType(event)
+        setSkip(5)
+      } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
+        addPhoto()
+        notify()
+        setType(event)
+        setSkip(5)
+      } 
+      
+    };
+
       useEffect(() => {
         fetch("https://dog.ceo/api/breeds/image/random")
         .then(res => res.json())
@@ -52,13 +47,12 @@ function SwipePage() {
         .catch(() => console.log("Fetch didn't work!"))
         
       }, [type])
-  
-
+        
   return (
 
     <span className="page">
-      <Navbar className="nav" variant="light">
       <ToastContainer></ToastContainer>
+      <Navbar className="nav" variant="light">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -71,11 +65,11 @@ function SwipePage() {
           <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
           <NavDropdown title="Adoption" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
-              <NavDropdown.Item href="">
-                Liked Pets ({myArray.length})
+              <NavDropdown.Item href="/likes">
+                Liked Pets ({likes.length})
               </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="/emergency">Surrender</Nav.Link>
+          <Nav.Link href="/petForm">Surrender</Nav.Link>
           <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
@@ -86,7 +80,7 @@ function SwipePage() {
             <Col>
               <Card style={{width: '500px'}}>
                 <Card.Img src={photos.message} className="d-block square mt-2" height="500" alt={photos.message} />
-                  <Card.Title>Mike</Card.Title>
+                  <Card.Title>{photos.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
               </Card>
             </Col>
