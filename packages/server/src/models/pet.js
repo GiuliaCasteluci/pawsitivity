@@ -35,6 +35,6 @@ const petSchema = new mongoose.Schema(
         
 
 
-const Pet = mongoose.model('Pet', productSchema)
+const Pet = mongoose.model('Pet', petSchema)
 
 export default Pet

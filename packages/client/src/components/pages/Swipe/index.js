@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, {useState} from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
@@ -9,20 +8,21 @@ import cancel from './cancel.png'
 import glass from './mag.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import LikesPage from "./likes";
 
 function SwipePage() { 
     const [type, setType] = useState(null)
-    const [myArray, setArray] = useState([])
+    const [likes, setArray] = useState([])
     const [photos, setPhotos] = useState({
       dog: "", 
-      adopted: myArray,
+      adopted: likes,
       })
     const [skip, setSkip] = useState(5)
  
   
     const addPhoto = () => { 
       const newPet = photos.message
-        setArray([...myArray, newPet])
+        setArray([...likes, newPet])
       }
       
     const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
@@ -47,8 +47,7 @@ function SwipePage() {
         .catch(() => console.log("Fetch didn't work!"))
         
       }, [type])
-  
-
+        
   return (
 
     <span className="page">
@@ -63,15 +62,15 @@ function SwipePage() {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Nav.Link className="ps-5" to='localhost:3000'>Home</Nav.Link>
+          <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
           <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Swipe</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Liked Pets
+              <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
+              <NavDropdown.Item href="/likes">
+                Liked Pets ({likes.length})
               </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link>Surrender</Nav.Link>
-          <Nav.Link>Resources</Nav.Link>
+          <Nav.Link href="/petForm">Surrender</Nav.Link>
+          <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
         <div id="carouselExampleControls" className="carousel position-static mt-5" data-bs-ride="carousel" tabIndex={0} onKeyDown={handleKeyDown}>

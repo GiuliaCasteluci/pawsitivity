@@ -9,6 +9,7 @@ import useAuth from "./hooks/useAuth";
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import SwipePage from './components/pages/Swipe';
+import LikesPage from './components/pages/Swipe/likes';
 
 
 //background of the page
@@ -37,6 +38,7 @@ function App() {
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
           <Route path="/adopt" element={<SwipePage />} />
+          <Route path="/likes" element={<LikesPage/>} />
         </Routes>
     </AppContainer>
   );
