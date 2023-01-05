@@ -14,7 +14,6 @@ function LikesPage() {
       dog: "", 
       adopted: likes,
       })
-    const [skip, setSkip] = useState(5)
  
   
     const addPhoto = () => { 
@@ -25,11 +24,9 @@ function LikesPage() {
       const handleKeyDown = (event) => {
         if(event.key === 'ArrowLeft' || event.target.id === 'next'){
           setType(event)
-          setSkip(5)
         } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
           addPhoto()
           setType(event)
-          setSkip(5)
         } 
         
       };
@@ -131,7 +128,6 @@ function LikesPage() {
         </div>
         </div>
       </span>
-
   );
 }
 
