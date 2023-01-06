@@ -8,10 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { Container, Card, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// const PetImage = styled.img`
-//   max-width: 400px;
-//   max-height: 400px;
-// `;
 
 const PetDataContainer = styled.div`
   display: flex;
@@ -21,20 +17,6 @@ const PetDataContainer = styled.div`
   height: 100vh;
 `;
 
-// const StyledImg = styled(Card.Img)`
-//   max-width: 400px;
-//   max-height: 400px;
-//   background-color: white;
-//   padding: 20px 60px;
-//   border-radius: 10px;
-// `;
-
-// const StyledCardBody = styled(Card.Body)`
-//   background-color: white;
-//   padding: 20px 60px;
-//   border-radius: 10px;
-//   text-align: center;
-// `;
 
 function EmergencyPage() {
   const [pets, setPets] = useState([]);

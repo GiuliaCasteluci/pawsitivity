@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
 import useAuth from "./hooks/useAuth";
+import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import SwipePage from './components/pages/swipe'
@@ -16,6 +17,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import "./App.css";
+import LikesPage from './components/pages/swipe/likes';
+
+
 //background of the page
 const AppContainer = styled.div`
   width: 100vw;
@@ -80,7 +84,8 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
           <Route path="/adopt" element={<SwipePage />} />
-          the user will be redirected to the login page  with path="*"  
+          <Route path="/likes" element={<LikesPage/>} />
+                    the user will be redirected to the login page  with path="*"  
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
         </Routes>
