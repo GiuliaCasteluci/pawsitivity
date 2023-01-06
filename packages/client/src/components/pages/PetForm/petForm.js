@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -33,6 +34,7 @@ function PetForm() {
     image: '',
   });
   const navigate = useNavigate();
+  const [pets, setPets] = useState([]);
 
 
   function handleChange(event) {
@@ -43,22 +45,28 @@ function PetForm() {
     });
   }
 
-
-  
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+    console.log("hello?")
     event.preventDefault();
-    console.log(formValues);
-    // send the form values to the emergency page
-    navigate("/emergency", { state: { pet: formValues } });
-  }
+    try {
+      const formData = new FormData()
+      formData.append("image", formValues.image)
+      console.log("How about now?")
 
- 
+      const path = await axios.post("http://localhost:3001/upload", formData);
+      console.log(path)
+      const response = await axios.post('http://localhost:3001/api/pets', { ...formValues, image: path.data});
+  
+      setPets([...pets, response.data]);
+
+      navigate('/emergency', { state: { pet: response.data } });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <PetFormContainer>
-      <Header />
-
       <form onSubmit={handleSubmit}>
         <h1>Surrender Pet</h1>
         <label className="formLabels">

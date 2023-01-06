@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const petProfile = () => {
+const PetProfile = ({ pet }) => {
   return (
-    <div>petProfile</div>
-  )
-}
+    <div>
+      <img src={pet.image} alt={pet.name} />
+      <h1>{pet.name}</h1>
+      <p>{pet.age}</p>
+      <p>{pet.gender}</p>
+      <p>{pet.description}</p>
+    </div>
+  );
+};
 
-export default petProfile
+export default PetProfile;

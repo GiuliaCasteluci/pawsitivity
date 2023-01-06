@@ -1,13 +1,15 @@
-import { Router } from 'express';
-import petRouter from './pets'
+import express from 'express';
+import petFormBackEnd from './petFormBackEnd';
+import fileRoutes from './upload';
+import fileUploader from "express-fileupload"
+const router = express.Router();
 
-const router = Router();
+router.get('/', (req, res) => {
+    res.status(200).send('api endpoint');
+});
 
 // All routes start with the API_URL (default '/api')
-router.get('/', (req, res, next) => {
-    res.status(200).send('api endpoint')
-  })
-  
-  router.use('/pets', petRouter)
+router.use('/pets', petFormBackEnd);
+router.use("/files", fileUploader, fileRoutes)
 
-export default router;
+module.exports = router;

@@ -6,10 +6,12 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
 import useAuth from "./hooks/useAuth";
+import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
-import SwipePage from './components/pages/Swipe';
-import LikesPage from './components/pages/Swipe/likes';
+import SwipePage from './components/pages/swipe';
+import LikesPage from './components/pages/swipe/likes';
+import PetProfile from './components/pages/PetProfile/petProfile';
 
 
 //background of the page
@@ -34,11 +36,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
-          the user will be redirected to the login page  with path="*"  
-          <Route path="/emergency" element={<EmergencyPage />} />
-          <Route path="/petForm" element={<PetForm />} />
           <Route path="/adopt" element={<SwipePage />} />
           <Route path="/likes" element={<LikesPage/>} />
+                    the user will be redirected to the login page  with path="*"  
+          <Route path="/emergency" element={<EmergencyPage />} />
+          <Route path="/petForm" element={<PetForm />} />
+          <Route exact path="/pets/:id" component={PetProfile} />
         </Routes>
     </AppContainer>
   );

@@ -7,7 +7,12 @@ import Header from '../Header'
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
- 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: pink;
 `;
 
 const Title = styled.h2`
@@ -23,6 +28,7 @@ const Home = () => {
       <Link to="/login">&nbsp;Sign In</Link>
       <Link to='/petForm'>&nbsp;Pet Form</Link>
       <Link to='/emergency'>&nbsp;Emergency</Link>
+      <Link to='/adopt'>&nbsp;Swipe</Link>
     </Container>
   );
 };
