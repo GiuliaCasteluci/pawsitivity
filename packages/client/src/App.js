@@ -9,7 +9,6 @@ import useAuth from "./hooks/useAuth";
 import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
-import SwipePage from './components/pages/swipe'
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import TextField from "@mui/material/TextField";
