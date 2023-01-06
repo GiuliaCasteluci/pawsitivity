@@ -10,6 +10,7 @@ import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import LikesPage from './components/pages/swipe/likes';
+import PetProfile from './components/pages/PetProfile/petProfile';
 
 
 //background of the page
@@ -39,6 +40,7 @@ function App() {
                     the user will be redirected to the login page  with path="*"  
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
+          <Route exact path="/pets/:id" component={PetProfile} />
         </Routes>
     </AppContainer>
   );

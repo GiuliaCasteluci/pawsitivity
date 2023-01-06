@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header";
-import { useNavigate } from "react-router-dom";
 
-import { Container, Card, Col, Button } from "react-bootstrap";
+import { Container, Card, Col, Button, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+
 
 
 const PetDataContainer = styled.div`
@@ -14,32 +15,23 @@ const PetDataContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 `;
 
 
 function EmergencyPage() {
   const [pets, setPets] = useState([]);
   const location = useLocation();
-  const { pet } = location.state;
 
   useEffect(() => {
-    // add the new pet to the list of pets
-    setPets([...pets, pet]);
-  }, [pet]);
+    axios.get("http://localhost:3001/api/pets")
+      .then(response => {
+        setPets(response.data)
+      })
+  }, []);
 
-  // function navigateToProfilePage(name) {
-  //   const navigate = useNavigate();
-  //   navigate(`/pets/${name}`); // navigate to the pet's profile page
-  // }
-
-  // onClick={() => navigateToProfilePage(name)}
-  
 
   return (
     <PetDataContainer>
-      <Header />
-
       <div>
         <h1>Emergency Page</h1>
         <Link to="/petform" className="btn btn-primary">
@@ -48,13 +40,14 @@ function EmergencyPage() {
         {pets.map(({ petType, name, age, gender, image }) => (
           <div key={name}>
             <div className="app">
-              <Container className="p-4">
+              <Container className="pet-card">
                 <Col md="4" className="mx-auto">
                   <Card>
                     <Card.Img
+                      id='uploaded-image'
                       className="my-image"
                       variant="top"
-                      src={URL.createObjectURL(image)}
+                      src={`http://localhost:3001/${image}`} alt="pet-image"
                     />
                     <Card.Body className="my-card-body">
                       <Card.Title>{name}</Card.Title>
@@ -67,7 +60,7 @@ function EmergencyPage() {
                         <Button variant="primary" >See profile</Button>
                       </Card.Text>
                     </Card.Body>
-                    
+
                   </Card>
                 </Col>
               </Container>

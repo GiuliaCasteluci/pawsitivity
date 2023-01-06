@@ -128,7 +128,7 @@ function LikesPage() {
         </div>
         </div>
       </span>
-  );
+);
 }
 
 export default LikesPage;
