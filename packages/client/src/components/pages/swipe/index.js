@@ -10,8 +10,6 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import LikesPage from "./likes";
 
-let names=['Jason', 'Kyle', 'Roman', 'Cassie', 'Max', 'Sara', 'Lacie']
-
 function SwipePage() { 
     const [type, setType] = useState(null)
     const [likes, setArray] = useState([])
@@ -49,10 +47,6 @@ function SwipePage() {
         .catch(() => console.log("Fetch didn't work!"))
         
       }, [type])
-
-      let randomName=function(array) {
-        return names[Math.floor(Math.random()*7)]
-      }
         
   return (
 
@@ -86,7 +80,7 @@ function SwipePage() {
             <Col>
               <Card style={{width: '500px'}}>
                 <Card.Img src={photos.message} className="d-block square mt-2" height="500" alt={photos.message} />
-                  <Card.Title>{randomName()}</Card.Title>
+                  <Card.Title>{photos.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
               </Card>
             </Col>

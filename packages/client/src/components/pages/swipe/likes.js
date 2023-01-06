@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, Container , Nav, Navbar, Row, NavDropdown, Card,} from "react-bootstrap";
+import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
 import paws from './PawsLogo.png'
-import { ToastContainer} from 'react-toastify'
+import heart from './heart.png'
+import cancel from './cancel.png'
+import glass from './mag.png'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 function LikesPage() { 
@@ -14,6 +17,7 @@ function LikesPage() {
       dog: "", 
       adopted: likes,
       })
+    const [skip, setSkip] = useState(5)
  
   
     const addPhoto = () => { 
@@ -24,9 +28,11 @@ function LikesPage() {
       const handleKeyDown = (event) => {
         if(event.key === 'ArrowLeft' || event.target.id === 'next'){
           setType(event)
+          setSkip(5)
         } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
           addPhoto()
           setType(event)
+          setSkip(5)
         } 
         
       };
@@ -64,7 +70,7 @@ function LikesPage() {
           <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
-        <div className="mt-5">
+        <div>
         <div>
         <Container>
             <Row>
@@ -127,8 +133,9 @@ function LikesPage() {
         </Container>
         </div>
         </div>
-      </span>
-);
+    </span>
+
+  );
 }
 
 export default LikesPage;
