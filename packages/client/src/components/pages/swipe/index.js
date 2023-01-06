@@ -32,10 +32,12 @@ function SwipePage() {
     const handleKeyDown = (event) => {
       if(event.key === 'ArrowLeft' || event.target.id === 'next'){
         setType(event)
+        setSkip(5)
       } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
         addPhoto()
         notify()
         setType(event)
+        setSkip(5)
       } 
       
     };
