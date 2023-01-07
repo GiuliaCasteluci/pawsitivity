@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header";
 
-import { Container, Card, Col, Button, Image } from "react-bootstrap";
+import { Container, Card, Col, Button, Image, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
