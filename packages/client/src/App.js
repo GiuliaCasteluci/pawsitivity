@@ -9,6 +9,8 @@ import useAuth from "./hooks/useAuth";
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import Header from './components/pages/Header';
+import PetProfile from './components/pages/PetProfile/petProfile';
+import Footer from './components/Footer/Footer';
 
 
 //background of the page
@@ -29,6 +31,7 @@ function App() {
   return (
     <AppContainer>
       <Header />
+      
         <Routes>
           <Route exact path="/home" element={<Private Item={Home} />} />
           <Route path="/login" element={<Login />} />
@@ -37,7 +40,9 @@ function App() {
           {/* the user will be redirected to the login page  with path="*"  */}
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
+          <Route path="/pets/:petId" element={<PetProfile />} />
         </Routes>
+        <Footer />
     </AppContainer>
   );
 }

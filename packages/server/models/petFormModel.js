@@ -30,6 +30,10 @@ const petFormSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User",
     },
+    _id: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+    },
 });
 
 const PetForm = mongoose.model("PetForm", petFormSchema);

@@ -1,5 +1,6 @@
 import express, { response } from "express";
 import PetForm from "../../models/petFormModel";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -8,56 +9,6 @@ router.route("/", (req, res) => {
 });
 
 // All routes start with the API_URL (default '/api')
-
-// router.post("/", (req, res) => {
-//   console.log(req.body);
-//   const { petType, name, age, gender, description, image } = req.body;
-//   res.status(200).send("petform endpoint");
-// });
-
-// router.post("/", (req, res) => {
-//   console.log(req.body);
-//   const { petType, name, age, gender, description, image } = req.body;
-
-
-//   PetForm.create({
-//     petType,
-//     name,
-//     age,
-//     gender,
-//     description,
-//     image
-//   })
-//     .then((pet) => {
-//       // Send a response to the client
-//       res.status(200).send(pet);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.status(500).send(error);
-//     });
-// });
-
-// router.post("/", requireAuth, async (request, response, next) => {
-//   const { text } = request.body;
-//   const { user } = request;
-
-//   const post = new Post({
-//     text: text,
-//     author: user._id,
-//   });
-
-//   try {
-//     const savedPost = await post.save();
-//     user.posts = user.posts.concat(savedPost._id);
-
-//     await user.save();
-
-//     response.json(savedPost.toJSON());
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 router.get("/", async(req, res, next) => {
   try {
@@ -80,7 +31,9 @@ router.post("/", async (request, response, next) => {
       age,
       gender,
       description,
-      image
+      image,
+      dateAdded: new Date(),
+      _id: new mongoose.Types.ObjectId(),
     });
 
     const savedPet = await pet.save();
@@ -94,28 +47,36 @@ router.post("/", async (request, response, next) => {
   }
 });
 
-  
-  // const petForm = new PetForm({
-  // petType,
-  // name,
-  // age,
-  // gender,
-  // description,
-  // image,
-  // });
-  
-  // try {
-  // const savedPetForm = await petForm.save();
-  // user.petForms = user.petForms.concat(savedPetForm._id);
-  
+router.delete("/:id", async (request, response, next) => {
+  try {
+    const post = await PetForm.findByIdAndDelete(request.params.id);
+    response.json(post);
+  } catch (error) {
+    next(error);
+  }
+});
 
-  // await user.save();
-  
-  // response.json(savedPetForm.toJSON());
-  // } catch (error) {
-  // next(error);
-  // }
-  // });
+// not working , works in postman
+router.get('/api/pets', async (req, res) => {
+  try {
+    const pets = await PetForm.find().sort({ dateAdded: -1 });
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+router.get('/:id', async (request, response, next) => {
+  try {
+    const pet = await PetForm.findById(request.params.id);
+    response.json(pet);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 router.get("/", (req, res) => {
   res.status(200).send("petform endpoint");
