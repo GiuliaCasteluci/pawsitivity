@@ -12,14 +12,11 @@ import axios from "axios";
 
 function SwipePage() { 
     const [likes, setArray] = useState([])
-    const [pet, setPets] = useState({
-      dog: "", 
-      adopted: likes,
-      })
+    const [pet, setPets] = useState({})
     const [skip, setSkip] = useState(5)
  
   
-    const addPhoto = () => { 
+    const nextPhoto = () => { 
       const newPet = pet.message
         setArray([...likes, newPet])
       }
@@ -30,7 +27,7 @@ function SwipePage() {
       if(event.key === 'ArrowLeft' || event.target.id === 'next'){
         setSkip(5)
       } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-        addPhoto()
+        nextPhoto()
         notify()
         setSkip(5)
       } 
@@ -69,22 +66,18 @@ function SwipePage() {
           <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
-        <div id="carouselExampleControls" className="carousel position-static mt-5" data-bs-ride="carousel" tabIndex={0} onKeyDown={handleKeyDown}>
-        <Container className="card">
-              <Card style={{width: '500px'}}>
+        <Container>
+              <Card  className="m-auto mt-5" style={{width: '500px'}}>
                 <Card.Img src={pet.message} className="d-block square mt-2" height="500" alt={pet.message} />
                   <Card.Title>{pet.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
+                  <div>
+                    <img src={cancel} id='next'onClick={handleKeyDown} className='circleIcon'/>
+                    <img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/>
+                    <img className='circleIcon' id="seeProfile" onClick={handleKeyDown} src={glass}/>
+                  </div>
               </Card>
-          <div>
-            <img src={cancel} id='next'onClick={handleKeyDown} className='circleIcon'/>
-            <img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/>
-            <img className='circleIcon' id="seeProfile" onClick={handleKeyDown} src={glass}/>
-          </div>
         </Container>
-        </div>
-        <div>
-        </div>
     </span>
 
   );
