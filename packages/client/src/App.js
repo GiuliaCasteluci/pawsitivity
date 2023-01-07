@@ -9,7 +9,6 @@ import useAuth from "./hooks/useAuth";
 import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
-import SwipePage from './components/pages/swipe';
 import LikesPage from './components/pages/swipe/likes';
 import PetProfile from './components/pages/PetProfile/petProfile';
 
