@@ -22,6 +22,7 @@ const PetFormContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
 `;
 
 function PetForm() {

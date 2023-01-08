@@ -6,38 +6,27 @@ import {Col, Container , Nav, Navbar, Row, NavDropdown, Card,} from "react-boots
 import paws from './PawsLogo.png'
 import { ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import axios from 'axios'
 
 function LikesPage() { 
     const [type, setType] = useState(null)
     const [likes, setArray] = useState([])
-    const [photos, setPhotos] = useState({
-      dog: "", 
-      adopted: likes,
-      })
- 
-  
-    const addPhoto = () => { 
-      const newPet = photos.message
-        setArray([...likes, newPet])
-      }
+    const [pets, setPets] = useState([])
       
       const handleKeyDown = (event) => {
         if(event.key === 'ArrowLeft' || event.target.id === 'next'){
           setType(event)
         } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-          addPhoto()
           setType(event)
         } 
         
       };
   
-        useEffect(() => {
-          fetch("https://dog.ceo/api/breeds/image/random")
-          .then(res => res.json())
-          .then(data => setPhotos(data))
-          .catch(() => console.log("Fetch didn't work!"))
-          
-        }, [type])
+      useEffect(() => {
+        axios.get("http://localhost:3001/api/pets").then((response) => {
+          setPets(response.data);
+        });
+      }, []);    
 
   return (
 
@@ -69,7 +58,7 @@ function LikesPage() {
         <Container>
             <Row>
                 <Col className="bg-light">
-                    <Card.Img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKr5wT7rfkjkGvNeqgXjBmarC5ZNoZs-H2uMpML8O7Q4F9W-IlUQibBT6IPqyvX45NOgw&usqp=CAU'} className="d-block square m-4" height="300" alt={photos.message} />
+                    <Card.Img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKr5wT7rfkjkGvNeqgXjBmarC5ZNoZs-H2uMpML8O7Q4F9W-IlUQibBT6IPqyvX45NOgw&usqp=CAU'} className="d-block square m-4" height="300" alt='' />
                 </Col>
                 <Col sm='8' className="bg-light">
                     <Card.Text className="m-5 text-primary"><h1 className="m-5 text-primary">Kyle</h1></Card.Text>
@@ -88,7 +77,7 @@ function LikesPage() {
 
             <Row>
                 <Col className="bg-light">
-                    <Card.Img src={photos.message} className="d-block square m-4" height="300" alt={photos.message} />
+                    <Card.Img src='' className="d-block square m-4" height="300" alt='' />
                 </Col>
                 <Col sm='8' className="bg-light">
                     <Card.Text className="m-5"><h1 className="m-5 text-primary">Rodney</h1></Card.Text>
@@ -107,7 +96,7 @@ function LikesPage() {
             
             <Row>
                 <Col className="bg-light">
-                    <Card.Img src={'https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg'} className="d-block square m-4" height="300" alt={photos.message} />
+                    <Card.Img src={'https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg'} className="d-block square m-4" height="300" alt='' />
                 </Col>
                 <Col sm='8' className="bg-light">
                     <Card.Text className="m-5"><h1 className="m-5 text-primary">Zach</h1></Card.Text>
