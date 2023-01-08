@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import { API_URL, DB_URL } from './configs';
+import { API_URL, DB_URL } from './configs/index';
 import routes from './routes';
 import router from "./routes/index.js"
 import path from 'path';
@@ -13,7 +13,13 @@ mongoose.connect(DB_URL, {
   useUnifiedTopology: true
 });
 
+mongoose.connection.on('connected', () => {
+  console.log('connected to mongoDB')
+})
 
+mongoose.connection.on('error', (err) => {
+  console.log('err connecting', err)
+})
 
 const app = express();
 
@@ -44,7 +50,6 @@ app.post('/upload', fileUpload(),  (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 })
-
 // app.use(API_URL, routes);
 app.use(API_URL, router);
 export default app;

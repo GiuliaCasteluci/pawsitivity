@@ -5,7 +5,9 @@
   
   /* li: each category name inside the nav bar  */
   .option {
-
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
   }
   
   

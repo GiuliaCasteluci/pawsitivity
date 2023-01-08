@@ -11,13 +11,14 @@ export const InputStyle = styled.input`
   border: none;
 `;
 
-const Input = ({ type, placeholder, value, onChange }) => {
+const Input = ({ type, placeholder, value, onChange, name }) => {
   return (
     <InputStyle
       value={value}
       onChange={onChange}
       type={type}
       placeholder={placeholder}
+      name={name}
     />
   );
 };

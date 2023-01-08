@@ -4,6 +4,8 @@ import fileRoutes from './upload';
 import fileUploader from "express-fileupload"
 
 const router = express.Router();
+import authRouter from './auth'
+
 
 router.get('/', (req, res) => {
     res.status(200).send('api endpoint');
@@ -14,5 +16,11 @@ router.get('/', (req, res) => {
 router.use('/pets', petFormBackEnd);
 router.use("/files", fileUploader, fileRoutes)
 
+router.get('/', (req, res, next) => {
+  res.status(200).send('api endpoint')
+})
+router.use('/auth', authRouter)
 
-module.exports = router;
+module.exports = router
+
+export default router;

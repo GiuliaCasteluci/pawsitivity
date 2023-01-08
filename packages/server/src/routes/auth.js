@@ -1,49 +1,35 @@
 import express from 'express'
-import bcrypt from 'bcryptjs'
 import { User } from '../models'
-import keys from '../config/keys'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { jwtConfig } from '../configs'
 
 const router = express.Router()
 
 router.route('/').get((req, res, next) => {
   res.send('auth endpoint')
+  res.end(JSON.stringify('Auth route'));
 })
 
-router.post('/signup', async (req, res) => {
-  const { username, password, profile_image, email } = req.body
-  if (!password || !username) {
-    return res.status(422).json({ error: 'please add all the fields' })
-  }
-
-  User.findOne({ username: username })
-    .then((savedUser) => {
-      if (savedUser) {
-        return res
-          .status(422)
-          .json({ error: 'user already exists with that name' })
-      }
-      bcrypt.hash(password, 12).then((hashedpassword) => {
-        const user = new User({
-          username,
-          passwordHash: hashedpassword,
-          profile_image: profile_image,
-          email: email,
-        })
-
-        user
-          .save()
-          .then((user) => {
-            res.json({ message: 'saved successfully' })
-          })
-          .catch((err) => {
-            res.json({ message: err.message})
-          })
-      })
+router.post('/signup', (req, res) => {
+  const { username, password, email } = req.body;
+  User.findOne({username: username}).then((savedUser) => {
+    if (savedUser) {
+      return res.status(422).json({error: 'User already exists'})
+    }
+  })
+  bcrypt.hash(password, 12).then((hashedPassword) => {
+    const user = new User({
+      username,
+      passwordHash: hashedPassword,
+      email
     })
-    .catch((err) => {
-      console.log(err)
+    user.save().then(user => {
+      res.status(200).json({message:"User created"})
+    }).catch(err => {
+      res.status(202).json({message: err.message})
     })
+  })
 })
 
 router.post('/signin', async (req, res) => {
@@ -67,10 +53,9 @@ router.post('/signin', async (req, res) => {
     id: user._id,
   }
 
-  const token = jwt.sign(userForToken, keys.jwt.secret)
+  const token = jwt.sign(userForToken, jwtConfig.secret)
   res
     .status(200)
-    .send({ token, username, uid: user.id, profile_image: user.profile_image })
+    .send({ token, username, uid: user.id, })
 })
-
 module.exports = router

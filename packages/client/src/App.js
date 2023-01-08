@@ -5,7 +5,7 @@ import Home from './components/pages/Home';
 import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
-import useAuth from "./hooks/useAuth";
+import instance from './utils/axiosConfig'
 import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
@@ -22,7 +22,7 @@ const AppContainer = styled.div`
 `;
 
 const Private = ({ Item }) => {
-  const { signed } = useAuth();
+  const { signed } = instance.getUserToken()
 
   return signed > 0 ? <Item /> : <Login />;
 };
@@ -35,12 +35,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
-          <Route path="/adopt" element={<SwipePage />} />
-          <Route path="/likes" element={<LikesPage/>} />
-                    the user will be redirected to the login page  with path="*"  
-          <Route path="/emergency" element={<EmergencyPage />} />
-          <Route path="/petForm" element={<PetForm />} />
-          <Route exact path="/pets/:id" component={PetProfile} />
+          {/* the user will be redirected to the login page  with path="*"   */}
         </Routes>
     </AppContainer>
   );

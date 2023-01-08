@@ -2,27 +2,52 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Input from '../../Input'
-import useAuth from '../../../hooks/useAuth'
-
+import { setAuthToken } from '../../../utils/axiosConfig'
+import { useProvideAuth } from '../../../hooks/useAuth'
 
 const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center
+
 
 `;
 
 const Content = styled.div`
- 
+  gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 1px 2px #0003;
+  background-color: white;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 5px;
 `;
 
 const Label = styled.label`
-
+  font-size: 18px;
+  font-weight: 600;
+  color: #676767;
 `;
 
 const LabelSignup = styled.label`
-
+  font-size: 16px;
+  color: #676767;
 `;
 
 const LabelError = styled.label`
- 
+  font-size: 14px;
+  color: red;
 `;
 
 const Strong = styled.strong`
@@ -31,41 +56,62 @@ const Strong = styled.strong`
     text-decoration: none;
     color: #676767;
   }
-  
 `;
 
+const Button = styled.button`
+  
+`
+const initialState = {
+  username: '',
+  password: '',
+  isSubmitting: false,
+  errorMessage: null,
+}
 
 const Login = () => {
-  const { login } = useAuth();
+  const auth = useProvideAuth()
+  const [data, setData] = useState(initialState)
+
   const navigate = useNavigate();
 
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleLogin = () => {
-    if (!email | !password) {
+  const handleInputChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    setData({
+      ...data,
+      isSubmitting: true,
+      errorMessage: null,
+    })
+
+    if (!data.username | !data.password) {
       setError("Please fill in all fields ");
       return;
     }
-
-    const res = login(email, password);
-
-    if (res) {
-      setError(res);
-      return;
+    try {
+      const res = await auth.signin(data.username, data.password)
+      setAuthToken(res.token)
+      setSuccess(true)
+      navigate('/')
+    } catch (error) {
+      setData({
+        ...data,
+        isSubmitting: false,
+        errorMessage: error ? error.message || error.statusText : null,
+      })
+      setSuccess(false)
     }
-
-    navigate("/home");
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(user)
-    setSuccess(true)
-    setUser('')
-  }
 
 
   return (
@@ -81,27 +127,21 @@ const Login = () => {
       ) : (
         <Container>
           <Label>LOGIN</Label>
-          <Content onSubmit={handleSubmit}>
+          <Content>
             <Input
               type="username"
+              name="username"
               placeholder="Type your username"
-              value={user}
-              onChange={(e) => [setUser(e.target.value), setError("")]}
-            />
-            <Input
-              type="email"
-              placeholder="Type your username or email"
-              value={email}
-              onChange={(e) => [setEmail(e.target.value), setError("")]}
+              onChange={handleInputChange}
             />
             <Input
               type="password"
+              name="password"
               placeholder="password"
-              value={password}
-              onChange={(e) => [setPassword(e.target.value), setError("")]}
+              onChange={handleInputChange}
             />
             <LabelError>{error}</LabelError>
-            {/* <Button Text="Enter" onClick={handleLogin} /> */}
+            <Button Text="Enter" onClick={handleLogin}> Login </Button>
             <LabelSignup>
               Don't have an account yet?
               <Strong>
