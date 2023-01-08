@@ -8,38 +8,45 @@ import cancel from './cancel.png'
 import glass from './mag.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import axios from "axios";
+import LikesPage from "./likes";
 
 function SwipePage() { 
+    const [type, setType] = useState(null)
     const [likes, setArray] = useState([])
-    const [pet, setPets] = useState({})
+    const [photos, setPhotos] = useState({
+      dog: "", 
+      adopted: likes,
+      })
     const [skip, setSkip] = useState(5)
  
   
-    const nextPhoto = () => { 
-      const newPet = pet.message
+    const addPhoto = () => { 
+      const newPet = photos.message
         setArray([...likes, newPet])
       }
       
-    const notify = () => toast.dark(`${pet.message} was added to your "Likes" page!`);
+    const notify = () => toast.dark(`${photos.message} was added to your "Likes" page!`);
     
     const handleKeyDown = (event) => {
       if(event.key === 'ArrowLeft' || event.target.id === 'next'){
+        setType(event)
         setSkip(5)
       } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-        nextPhoto()
+        addPhoto()
         notify()
+        setType(event)
         setSkip(5)
       } 
       
     };
 
-    useEffect(() => {
-      axios.get("http://localhost:3001/api/pets")
-        .then(response => {
-          setPets(response.data)
-        })
-    }, []);
+      useEffect(() => {
+        fetch("https://dog.ceo/api/breeds/image/random")
+        .then(res => res.json())
+        .then(data => setPhotos(data))
+        .catch(() => console.log("Fetch didn't work!"))
+        
+      }, [type])
         
   return (
 
@@ -66,18 +73,30 @@ function SwipePage() {
           <Nav.Link href="">Resources</Nav.Link>
         </Container>
       </Navbar>
-        <Container>
-              <Card  className="m-auto mt-5" style={{width: '500px'}}>
-                <Card.Img src={pet.message} className="d-block square mt-2" height="500" alt={pet.message} />
-                  <Card.Title>{pet.message}</Card.Title>
+        <div id="carouselExampleControls" className="carousel position-static mt-5" data-bs-ride="carousel" tabIndex={0} onKeyDown={handleKeyDown}>
+        <Container className="card">
+          <Row>
+            <Col></Col>
+            <Col>
+              <Card style={{width: '500px'}}>
+                <Card.Img src={photos.message} className="d-block square mt-2" height="500" alt={photos.message} />
+                  <Card.Title>{photos.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
-                  <div>
-                    <img src={cancel} id='next'onClick={handleKeyDown} className='circleIcon'/>
-                    <img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/>
-                    <img className='circleIcon' id="seeProfile" onClick={handleKeyDown} src={glass}/>
-                  </div>
               </Card>
+            </Col>
+            <Col></Col>
+          </Row>
+          <Row className="text-center text-light mt-4">
+          <Col sm='3'></Col>
+          <Col><div className="circle mx-auto m-2" ><img src={cancel} id='next'onClick={handleKeyDown} className='circleIcon'/></div></Col>
+          <Col><div className="circle mx-auto m-2"><img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/></div></Col>
+          <Col><div className="circle mx-auto m-2" id="seeProfile" onClick={handleKeyDown}><img className='circleIcon' id="seeProfile" onClick={handleKeyDown} src={glass}/></div></Col>
+          <Col  sm='3'></Col>
+          </Row>
         </Container>
+        </div>
+        <div>
+        </div>
     </span>
 
   );
