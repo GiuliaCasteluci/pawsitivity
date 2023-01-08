@@ -33,9 +33,6 @@ const Home = () => {
     signout,
   } = useProvideAuth()
 
-  if (!user) {
-    return null
-  }
   return (
     <Container>
       <Header />
@@ -43,7 +40,8 @@ const Home = () => {
       <Link to='/petForm'>&nbsp;Pet Form</Link>
       <Link to='/emergency'>&nbsp;Emergency</Link>
       <Link to='/adopt'>&nbsp;Swipe</Link>
-      <Button variant='outline-info' id='activate' onClick={() => signout()}>Sign Out</Button>
+      {user ? <Button variant='outline-info' id='activate' onClick={() => signout()}>Sign Out</Button> : null}
+      
     </Container>
   );
 };
