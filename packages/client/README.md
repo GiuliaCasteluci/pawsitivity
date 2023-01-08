@@ -74,4 +74,4 @@ npm install react-router-dom
 npm install bcryptjs
 npm install axios
 npm install --save react-toastify
-
+npm install react-bootstrap 
