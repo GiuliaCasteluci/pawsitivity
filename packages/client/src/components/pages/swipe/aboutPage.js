@@ -35,7 +35,7 @@ function AboutPage() {
       <ToastContainer></ToastContainer>
       <Navbar className="nav" variant="light">
         <Container>
-          <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
             <img
               alt=""
               src={paws}
