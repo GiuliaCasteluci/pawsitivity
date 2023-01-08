@@ -18,8 +18,6 @@ mongoose.connection.on('error', (err) => {
   console.log('err connecting', err)
 })
 
-console.log(mongoose.connection.db.listCollections())
-
 const app = express();
 
 app.use(cors());

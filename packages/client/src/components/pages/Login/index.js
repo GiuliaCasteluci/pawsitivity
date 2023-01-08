@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Input from '../../Input'
-import useAuth from '../../../hooks/useAuth'
+import { setAuthToken } from '../../../utils/axiosConfig'
+import { useProvideAuth } from '../../../hooks/useAuth'
 
 const Container = styled.div`
   display: flex;
@@ -60,40 +61,57 @@ const Strong = styled.strong`
 const Button = styled.button`
   
 `
+const initialState = {
+  username: '',
+  password: '',
+  isSubmitting: false,
+  errorMessage: null,
+}
 
 const Login = () => {
-  const login = useAuth();
+  const auth = useProvideAuth()
+  const [data, setData] = useState(initialState)
+
   const navigate = useNavigate();
 
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");  
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const handleInputChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
 
-  const handleLogin = () => {
-    if (!email | !password) {
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    setData({
+      ...data,
+      isSubmitting: true,
+      errorMessage: null,
+    })
+
+    if (!data.username | !data.password) {
       setError("Please fill in all fields ");
       return;
     }
-
-    const res = login(email, password);
-
-    if (res) {
-      setError(res);
-      return;
+    try {
+      const res = await auth.signin(data.username, data.password)
+      setAuthToken(res.token)
+      setSuccess(true)
+      navigate('/')
+    } catch (error) {
+      setData({
+        ...data,
+        isSubmitting: false,
+        errorMessage: error ? error.message || error.statusText : null,
+      })
+      setSuccess(false)
     }
-
-    navigate("/home");
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(user)
-    setSuccess(true)
-    setUser('')
-  }
 
 
   return (
@@ -109,27 +127,21 @@ const Login = () => {
       ) : (
         <Container>
           <Label>LOGIN</Label>
-          <Content onSubmit={handleSubmit}>
+          <Content>
             <Input
               type="username"
+              name="username"
               placeholder="Type your username"
-              value={user}
-              onChange={(e) => [setUser(e.target.value), setError("")]}
-            />
-            <Input
-              type="email"
-              placeholder="Type your username or email"
-              value={email}
-              onChange={(e) => [setEmail(e.target.value), setError("")]}
+              onChange={handleInputChange}
             />
             <Input
               type="password"
+              name="password"
               placeholder="password"
-              value={password}
-              onChange={(e) => [setPassword(e.target.value), setError("")]}
+              onChange={handleInputChange}
             />
             <LabelError>{error}</LabelError>
-            <Button Text="Enter" onClick={handleLogin} />
+            <Button Text="Enter" onClick={handleLogin}> Login </Button>
             <LabelSignup>
               Don't have an account yet?
               <Strong>

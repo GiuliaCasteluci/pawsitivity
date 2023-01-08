@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../../components/Input";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import useAuth from "../../../hooks/useAuth";
+import {useAuth} from "../../../hooks/useAuth";
 import axios from 'axios'
 
 const Container = styled.div`
@@ -78,8 +78,6 @@ const Register = () => {
   }
 
   const handleSubmit = async (event) => {
-
-    const form = event.currentTarget
     event.preventDefault()
     event.stopPropagation()
     setData({
@@ -96,7 +94,7 @@ const Register = () => {
           errorMessage: 'Password and Password Confirmation must be the same.',
         })
       } else {
-        axios.post('/signin',
+        axios.post('http://localhost:3001/api/auth/signup',
           {
             username: data.username,
             password: data.password,
@@ -109,7 +107,7 @@ const Register = () => {
           .catch(function (error) {
             console.log(error);
           });
-        // navigate('/')
+        navigate('/')
       }
     } catch (error) {
       setData({

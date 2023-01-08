@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
-import keys from '../configs/index'
+import { jwtConfig } from '../configs'
 import { User } from '../models/users'
 
 module.exports = async (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     return res.status(401).json({ error: 'you must be logged in' })
   }
   const token = authorization.replace('Bearer ', '')
-  jwt.verify(token, keys.jwt.secret, (err, payload) => {
+  jwt.verify(token, jwtConfig.secret, (err, payload) => {
     if (err) {
       return res.status(401).json({ error: 'you must be logged in' })
     }

@@ -5,7 +5,7 @@ import Home from './components/pages/Home';
 import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
-import useAuth from "./hooks/useAuth";
+import instance from './utils/axiosConfig'
 
 
 //background of the page
@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 `;
 
 const Private = ({ Item }) => {
-  const { signed } = useAuth();
+  const { signed } = instance.getUserToken()
 
   return signed > 0 ? <Item /> : <Login />;
 };
