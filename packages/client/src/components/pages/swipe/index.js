@@ -10,36 +10,26 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from "axios";
 
-function SwipePage() { 
-    const [likes, setArray] = useState([])
-    const [pet, setPets] = useState({})
-    const [skip, setSkip] = useState(5)
- 
-  
-    const nextPhoto = () => { 
-      const newPet = pet.message
-        setArray([...likes, newPet])
-      }
-      
-    const notify = () => toast.dark(`${pet.message} was added to your "Likes" page!`);
+function SwipePage() {       
+      const [type, setType] = useState(null)
+      const [likes, setArray] = useState([])
+      const [pets, setPets] = useState([])
+        
+        const handleKeyDown = (event) => {
+          if(event.key === 'ArrowLeft' || event.target.id === 'next'){
+            setType(event)
+          } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
+            setType(event)
+          } 
+          
+        };
     
-    const handleKeyDown = (event) => {
-      if(event.key === 'ArrowLeft' || event.target.id === 'next'){
-        setSkip(5)
-      } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-        nextPhoto()
-        notify()
-        setSkip(5)
-      } 
-      
-    };
-
-    useEffect(() => {
-      axios.get("http://localhost:3001/api/pets")
-        .then(response => {
-          setPets(response.data)
-        })
-    }, []);
+        useEffect(() => {
+          axios.get("http://localhost:3001/api/pets").then((response) => {
+            setPets(response.data);
+          });
+        }, []);    
+  
         
   return (
 
@@ -67,16 +57,18 @@ function SwipePage() {
         </Container>
       </Navbar>
         <Container>
+          {pets.map(pet => (
               <Card  className="m-auto mt-5" style={{width: '500px'}}>
                 <Card.Img src={pet.message} className="d-block square mt-2" height="500" alt={pet.message} />
                   <Card.Title>{pet.message}</Card.Title>
                   <Card.Text>Age: 2 | Weight: 5 | Breed: Good Boy</Card.Text>
-                  <div>
+                  <div className="d-flex flex-column">
                     <img src={cancel} id='next'onClick={handleKeyDown} className='circleIcon'/>
-                    <img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/>
+                    {/* <img src={heart} className='circleIcon' id="like" onClick={handleKeyDown}/> */}
                     <img className='circleIcon' id="seeProfile" onClick={handleKeyDown} src={glass}/>
                   </div>
               </Card>
+            ))}
         </Container>
     </span>
 
