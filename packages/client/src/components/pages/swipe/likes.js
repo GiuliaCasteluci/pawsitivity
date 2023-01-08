@@ -19,10 +19,8 @@ function LikesPage() {
       const handleKeyDown = (event) => {
         if(event.key === 'ArrowLeft' || event.target.id === 'next'){
           setType(event)
-          setSkip(5)
         } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
           setType(event)
-          setSkip(5)
         } 
         
       };
@@ -55,69 +53,25 @@ function LikesPage() {
               </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/petForm">Surrender</Nav.Link>
-          <Nav.Link href="">Resources</Nav.Link>
+          <NavDropdown title="Resources" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/resources">Pet Resources</NavDropdown.Item>
+              <NavDropdown.Item href="/aboutUs">About Us</NavDropdown.Item>
+          </NavDropdown>
         </Container>
       </Navbar>
         <div>
         <div>
-        <Container>
-            <Row>
-                <Col className="bg-light">
-                    <Card.Img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKr5wT7rfkjkGvNeqgXjBmarC5ZNoZs-H2uMpML8O7Q4F9W-IlUQibBT6IPqyvX45NOgw&usqp=CAU'} className="d-block square m-4" height="300" alt='' />
-                </Col>
-                <Col sm='8' className="bg-light">
-                    <Card.Text className="m-5 text-primary"><h1 className="m-5 text-primary">Kyle</h1></Card.Text>
-                    <Card.Body className="text-primary text-center">
-                        <h3>Gender</h3>
-                        <p>Male</p>
-
-                        <h3>Age</h3>
-                        <p>2 Years</p>
-                        
-                        <h3>Details</h3>
-                        <p>Requires lots of love and attention</p>
-                    </Card.Body>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col className="bg-light">
-                    <Card.Img src='' className="d-block square m-4" height="300" alt='' />
-                </Col>
-                <Col sm='8' className="bg-light">
-                    <Card.Text className="m-5"><h1 className="m-5 text-primary">Rodney</h1></Card.Text>
-                    <Card.Body className="text-primary text-center">
-                        <h3>Gender</h3>
-                        <p>Male</p>
-
-                        <h3>Age</h3>
-                        <p>4 Years</p>
-                        
-                        <h3>Details</h3>
-                        <p>Really good with small children</p>
-                    </Card.Body>
-                </Col>
-            </Row>
-            
-            <Row>
-                <Col className="bg-light">
-                    <Card.Img src={'https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg'} className="d-block square m-4" height="300" alt='' />
-                </Col>
-                <Col sm='8' className="bg-light">
-                    <Card.Text className="m-5"><h1 className="m-5 text-primary">Zach</h1></Card.Text>
-                    <Card.Body className="text-primary text-center">
-                        <h3>Gender</h3>
-                        <p>Male</p>
-
-                        <h3>Age</h3>
-                        <p>1 Year</p>
-                        
-                        <h3>Details</h3>
-                        <p>(No details provided by owner)</p>
-                    </Card.Body>
-                </Col>
-            </Row>
-
+        <Container className="d-flex flex-wrap">
+        {pets.map(pet => (
+                <Card  className="d-flex m-auto mt-5 p-1" style={{width: '500px'}}>
+                  <Card.Img src={'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*'} className="d-block square mt-2" height="500" alt={pet.image} />
+                    <Card.Title className="m-auto"><h1>{pet.name}</h1></Card.Title>
+                    <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>
+                    <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
+                    <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
+                    <img className='circleIcon m-auto' id="seeProfile" onClick={handleKeyDown} alt='See' src={glass}/>
+                </Card>
+        ))}
         </Container>
         </div>
         </div>

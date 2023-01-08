@@ -11,6 +11,8 @@ import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
 import LikesPage from './components/pages/swipe/likes';
 import PetProfile from './components/pages/PetProfile/petProfile';
+import ResourcePage from './components/pages/swipe/resourcesPage';
+import AboutPage from './components/pages/swipe/aboutPage';
 
 
 //background of the page
@@ -41,6 +43,9 @@ function App() {
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
           <Route exact path="/pets/:id" component={PetProfile} />
+          <Route path="/resources" element={<ResourcePage />} />
+          <Route path="/aboutUs" element={<AboutPage />} />
+
         </Routes>
     </AppContainer>
   );
