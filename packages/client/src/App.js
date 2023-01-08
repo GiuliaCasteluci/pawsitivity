@@ -30,7 +30,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
-          the user will be redirected to the login page  with path="*"  
+          {/* the user will be redirected to the login page  with path="*"   */}
         </Routes>
     </AppContainer>
   );

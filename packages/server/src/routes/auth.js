@@ -1,76 +1,32 @@
 import express from 'express'
-import bcrypt from 'bcryptjs'
-import { User } from '../models'
-import keys from '../config/keys'
-import jwt from 'jsonwebtoken'
+import { User } from '../models/users'
 
 const router = express.Router()
 
 router.route('/').get((req, res, next) => {
   res.send('auth endpoint')
+  res.end(JSON.stringify('Auth route'));
 })
 
-router.post('/signup', async (req, res) => {
-  const { username, password, profile_image, email } = req.body
-  if (!password || !username) {
-    return res.status(422).json({ error: 'please add all the fields' })
-  }
+router.post('/signup', (req, res) => {
+  const { username, password, email } = req.body;
+  User.findOne({username: username}).then((savedUser) => {
+    if (savedUser) {
+      return res.status(422).json({error: 'User already exists'})
+    }
+  })
 
-  User.findOne({ username: username })
-    .then((savedUser) => {
-      if (savedUser) {
-        return res
-          .status(422)
-          .json({ error: 'user already exists with that name' })
-      }
-      bcrypt.hash(password, 12).then((hashedpassword) => {
-        const user = new User({
-          username,
-          passwordHash: hashedpassword,
-          profile_image: profile_image,
-          email: email,
-        })
-
-        user
-          .save()
-          .then((user) => {
-            res.json({ message: 'saved successfully' })
-          })
-          .catch((err) => {
-            res.json({ message: err.message})
-          })
-      })
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-})
-
-router.post('/signin', async (req, res) => {
-  const { username, password } = req.body
-  if (!username || !password) {
-    return res.status(422).json({ error: 'missing username or password' })
-  }
-
-  const user = await User.findOne({ username: username })
-  const passwordCorrect =
-    user === null ? false : await bcrypt.compare(password, user.passwordHash)
-
-  if (!(user && passwordCorrect)) {
-    return res.status(401).json({
-      error: 'invalid username or password',
-    })
-  }
-
-  const userForToken = {
-    username: user.username,
-    id: user._id,
-  }
-
-  const token = jwt.sign(userForToken, keys.jwt.secret)
-  res
-    .status(200)
-    .send({ token, username, uid: user.id, profile_image: user.profile_image })
+  const user = new User({
+    username,
+    password,
+    email
+  })
+  console.log(user)
+  user.save().then(user => {
+    res.status(200).json({message:"User created"})
+  }).catch(err => {
+    res.status(202).json({message: err.message})
+  })
 })
 
 module.exports = router

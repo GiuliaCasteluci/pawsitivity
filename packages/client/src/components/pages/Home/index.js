@@ -20,7 +20,7 @@ const Title = styled.h2`
 `;
 
 const Home = () => {
-  const { signout } = useAuth();
+  // const { signout } = useAuth.signout();
   const navigate = useNavigate();
 
   return (

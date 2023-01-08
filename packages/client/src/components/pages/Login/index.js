@@ -10,6 +10,13 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center
+
+
 `;
 
 const Content = styled.div`
@@ -50,9 +57,12 @@ const Strong = styled.strong`
   }
 `;
 
+const Button = styled.button`
+  
+`
 
 const Login = () => {
-  const { login } = useAuth();
+  const login = useAuth();
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
@@ -119,7 +129,7 @@ const Login = () => {
               onChange={(e) => [setPassword(e.target.value), setError("")]}
             />
             <LabelError>{error}</LabelError>
-            {/* <Button Text="Enter" onClick={handleLogin} /> */}
+            <Button Text="Enter" onClick={handleLogin} />
             <LabelSignup>
               Don't have an account yet?
               <Strong>

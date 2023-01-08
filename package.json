@@ -19,7 +19,12 @@
     "packages/client"
   ],
   "dependencies": {
+    "axios": "^1.2.2",
+    "bcryptjs": "^2.4.3",
+    "express-list-endpoints": "^6.0.0",
+    "jsonwebtoken": "^9.0.0",
     "react-router-dom": "^6.4.5",
+    "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6"
   }
 }

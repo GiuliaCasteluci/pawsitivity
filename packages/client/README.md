@@ -71,3 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 npm install --save styled-components
 npm install react-router-dom
+npm install bcryptjs
+npm install axios
+npm install --save react-toastify
+

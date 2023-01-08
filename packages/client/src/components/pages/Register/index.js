@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Input from "../../../components/Input";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
 import styled from "styled-components";
-// import Button from "../../../components/Button";
-
+import useAuth from "../../../hooks/useAuth";
+import axios from 'axios'
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +39,7 @@ const LabelSignin = styled.label`
   color: #676767;
 `;
 
-const labelError = styled.label`
+const LabelError = styled.label`
   font-size: 14px;
   color: red;
 `;
@@ -52,67 +51,116 @@ const Strong = styled.strong`
     color: #676767;
   }
 `;
+const Button = styled.button`
+`;
 
+const initialState = {
+  username: '',
+  password: '',
+  passwordConfirmation: '',
+  email: '',
+  isSubmitting: false,
+  errorMessage: null,
+}
 const Register = () => {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailConf, setEmailConf] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState(initialState)
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const auth = useAuth();
 
-  const { register } = useAuth();
+  const handleInputChange = (event) => {
+    console.log(data)
+    console.log(event.target.name)
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
 
-  const handleSignup = () => {
-    if (!email | !emailConf | !password) {
-      setError("Please fill in all fields");
-      return;
-    } else if (email !== emailConf) {
-      setError("email does not match");
-      return;
+  const handleSubmit = async (event) => {
+
+    const form = event.currentTarget
+    event.preventDefault()
+    event.stopPropagation()
+    setData({
+      ...data,
+      isSubmitting: true,
+      errorMessage: null,
+    })
+
+    try {
+      if (data.password !== data.passwordConfirmation) {
+        setData({
+          ...data,
+          isSubmitting: false,
+          errorMessage: 'Password and Password Confirmation must be the same.',
+        })
+      } else {
+        axios.post('/signin',
+          {
+            username: data.username,
+            password: data.password,
+            email: data.email
+          }
+        )
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // navigate('/')
+      }
+    } catch (error) {
+      setData({
+        ...data,
+        isSubmitting: false,
+        errorMessage: error ? error.message || error.statusText : null,
+      })
     }
 
-    const res = register(email, password);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    alert("Usuário cadatrado com sucesso!");
-    navigate("/");
-  };
+  }
 
   return (
     <Container>
-      <Label>LOGIN</Label>
+      <Label>Register</Label>
       <Content>
-      <Input
+        <Input
           type="username"
+          name="username"
           placeholder="Type your username"
-          value={user}
-          onChange={(e) => [setUser(e.target.value), setError("")]}
+          onChange={handleInputChange}
         />
         <Input
           type="email"
+          name="email"
           placeholder="Type your email"
-          value={email}
-          onChange={(e) => [setEmail(e.target.value), setError("")]}
+
+          onChange={handleInputChange}
         />
         <Input
           type="email"
+          name="emailConfirmation"
           placeholder="Confirm your email"
-          value={emailConf}
-          onChange={(e) => [setEmailConf(e.target.value), setError("")]}
+          onChange={handleInputChange}
         />
         <Input
           type="password"
+          name="password"
           placeholder="Type your password"
-          value={password}
-          onChange={(e) => [setPassword(e.target.value), setError("")]}
+          onChange={handleInputChange}
         />
-        <labelError>{error}</labelError>
-        {/* <Button Text="register" onClick={handleSignup} /> */}
+        <Input
+          type='password'
+          name='passwordConfirmation'
+          required
+          placeholder="Type your password"
+          id='inputPasswordConfirmationRegister'
+          onChange={handleInputChange}
+        />
+
+        <LabelError>{error}</LabelError>
+        <Button Text="register" onClick={handleSubmit}> submit </Button>
         <LabelSignin>
           already signed up?
           <Strong>
