@@ -21,9 +21,9 @@ const AppContainer = styled.div`
 `;
 
 const Private = ({ Item }) => {
-  const savedUser = JSON.parse(localStorage.getItem('MernAppUser'))
+  const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
    
-  const { signed } = savedUser ? savedUser.token : ''
+  const { signed } = loggedUser ? loggedUser.token : ''
 
   return signed > 0 ? <Item /> : <Login />;
 };
@@ -32,7 +32,6 @@ function App() {
   return (
     <AppContainer>
         <Routes>
-          <Route exact path="/home" element={<Private Item={Home} />} />
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
