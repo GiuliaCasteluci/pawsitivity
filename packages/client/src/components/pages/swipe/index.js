@@ -23,14 +23,13 @@ function SwipePage() {
             setType(event)
             setPets(pets.filter(pet => pet._id !== event.target.name))
             console.log(event.target.id)
-            console.log((`${pets.name} was added to likes`))
-            toast.error()
+            toast.error(`${event.target.name} was disliked`)
             // setPets(pets.filter(pet => pet._id !== ))
           } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
             setType(event)
             setPets(pets.filter(pet => pet._id !== event.target.name))
             console.log(pets)
-            toast.success(`${pets.name} was added to likes`)
+            toast.success(`${event.target.name} was added to likes`)
           } 
           
         };
@@ -75,11 +74,10 @@ function SwipePage() {
             <Carousel
             interval={null} 
             indicators=''
-            activeIndex={0}
             >
             {pets.map(pet => {
               return (
-              <Carousel.Item>
+              <Carousel.Item >
                 <Card className="d-flex m-auto mt-5 p-3" style={{width: '50vw'}}>
                   <Card.Img src={'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*'} className="d-block square mt-2" height="500" alt={pet.image} />
                     <Card.Title className="m-auto"><h1>{pet.name}</h1></Card.Title>
@@ -87,8 +85,8 @@ function SwipePage() {
                     <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
                     <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
                     <div className="d-flex flex-row justify-content-evenly m-2">
-                      <img className='circleIcon' id='next' onClick={handleKeyDown} name={pet._id} src={cancel}/>
-                      <img className='circleIcon' id="like" onClick={handleKeyDown} name={pet._id} src={heart}/>
+                      <img className='circleIcon' id='next' data-slide="next" onClick={handleKeyDown} name={pet._id} src={cancel}/>
+                      <img className='circleIcon' id="like" data-slide="next" onClick={handleKeyDown} name={pet._id} src={heart}/>
                       <img className='circleIcon' id="seeProfile" onClick={handleKeyDown} alt='See' src={glass}/>
                     </div>
                 </Card>

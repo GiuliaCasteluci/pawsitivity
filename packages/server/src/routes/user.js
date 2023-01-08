@@ -37,7 +37,7 @@
           const userUpdate = await User.findByIdAndUpdate(
             id,
             {
-              passwordHash: hashedpasswor0d,
+              passwordHash: hashedpassword,
             },
             {
               new: true,
