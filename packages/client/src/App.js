@@ -37,6 +37,9 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route path="*" element={<Home />} /> 
           {/* the user will be redirected to the login page  with path="*"   */}
+          <Route path="/emergency" element={<EmergencyPage />} />
+          <Route path="/petForm" element={<PetForm />} />
+          <Route path="/pets/:petId" element={<PetProfile />} />
         </Routes>
     </AppContainer>
   );

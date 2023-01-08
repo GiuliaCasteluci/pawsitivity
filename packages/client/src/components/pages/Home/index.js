@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import { useProvideAuth } from "../../../hooks/useAuth";
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  background-color: white;
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+background: white;
 `;
 
 const Title = styled.h2`
@@ -18,7 +18,14 @@ const Title = styled.h2`
 `;
 
 const Button = styled.button`
+font-size: 1em;
+margin: 1em;
+padding: 0.25em 1em;
+border: 2px solid;
+border-radius: 3px;
+width: 7%;
 `;
+
 
 const Home = () => {
   const {
@@ -36,7 +43,7 @@ const Home = () => {
       <Link to='/petForm'>&nbsp;Pet Form</Link>
       <Link to='/emergency'>&nbsp;Emergency</Link>
       <Link to='/adopt'>&nbsp;Swipe</Link>
-      <Button variant='outline-info' onClick={() => signout()}>Sign Out</Button>
+      <Button variant='outline-info' id='activate' onClick={() => signout()}>Sign Out</Button>
     </Container>
   );
 };
