@@ -43,6 +43,8 @@ function App() {
           <Route path="/petForm" element={<PetForm />} />
           <Route path="/resources" element={<ResourcePage />} />
           <Route path="/aboutUs" element={<AboutPage />} />
+          <Route path="/adopt" element={<SwipePage />} />
+          <Route path="/likes" element={<LikesPage />} />
           <Route path="/pets/:petId" element={<PetProfile />} />
         </Routes>
     </AppContainer>
