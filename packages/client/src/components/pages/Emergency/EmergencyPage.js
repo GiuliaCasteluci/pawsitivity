@@ -35,7 +35,7 @@ const EmergencyPage = ({ pet }) => {
       >
         {localPets.map(({ petType, name, age, gender, image, _id }) => (
           //  key={_id}>
-          <Card style={{ height: "400px", width: "300px", marginBottom: '10px'}}>
+          <Card style={{ height: "400px", width: "300px", marginBottom: '40px'}}>
             <Card.Img
               id="uploaded-image"
               className="my-image"
@@ -65,7 +65,9 @@ const EmergencyPage = ({ pet }) => {
             </Card.Body>
           </Card>
         ))}
+        
       </div>
+      {/* <div className="empty3"></div> */}
     </div>
   );
 };

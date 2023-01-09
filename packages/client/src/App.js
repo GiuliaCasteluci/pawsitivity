@@ -11,6 +11,7 @@ import PetForm from './components/pages/PetForm/petForm';
 import Header from './components/pages/Header';
 import PetProfile from './components/pages/PetProfile/petProfile';
 import Footer from './components/Footer/Footer';
+import HomePage from './components/pages/HomePage/homePage';
 
 
 //background of the page
@@ -39,6 +40,7 @@ function App() {
           <Route path="/emergency" element={<EmergencyPage />} />
           <Route path="/petForm" element={<PetForm />} />
           <Route path="/pets/:petId" element={<PetProfile />} />
+          <Route path="/homePage" element={<HomePage />} />
         </Routes>
         <Footer />
     </AppContainer>

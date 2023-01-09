@@ -3,7 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { API_URL, DB_URL } from './configs';
-import routes from './routes';
 import router from "./routes/index.js"
 import path from 'path';
 import fileUpload from 'express-fileupload';
@@ -12,8 +11,6 @@ mongoose.connect(DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-
 
 const app = express();
 
