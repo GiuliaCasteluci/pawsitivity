@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import PetForm from "../../models/petFormModel";
+import PetForm from "../models/petFormModel";
 import mongoose from "mongoose";
 
 const router = express.Router();

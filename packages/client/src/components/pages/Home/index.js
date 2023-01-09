@@ -1,32 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from '../Header'
 import { Link } from "react-router-dom";
 import { useProvideAuth } from "../../../hooks/useAuth";
-import HeaderOptions from '../HeaderOptions';
 
-const HeaderContainer = styled.div`
-`
-
-// sign and signout container
 const Container = styled.div`
-display: block;
-color: white;
-text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
 `;
 
 const Title = styled.h2`
+  
 `;
 
 const Button = styled.button`
-font-size: 1em;
-margin: 1em;
-padding: 0.25em 1em;
-border: 2px solid;
-border-radius: 3px;
-width: 7%;
 `;
-
 
 const Home = () => {
   const {
@@ -34,14 +27,15 @@ const Home = () => {
     signout,
   } = useProvideAuth()
 
+  if (!user) {
+    return null
+  }
   return (
-    <HeaderContainer>
-      <Container>
+    <Container>
+      <Header />
       <Link to="/login">&nbsp;Sign In</Link>
-      {user ? <Button variant='outline-info' id='activate' onClick={() => signout()}>Sign Out</Button> : null}
+      <Button variant='outline-info' onClick={() => signout()}>Sign Out</Button>
     </Container>
-    </HeaderContainer>
-    
   );
 };
 export default Home;
