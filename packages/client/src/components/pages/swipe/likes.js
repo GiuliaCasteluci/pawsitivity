@@ -64,7 +64,7 @@ function LikesPage() {
         <Container className="d-flex flex-wrap">
         {pets.map(pet => (
                 <Card  className="d-flex m-auto mt-5 p-1" style={{width: '500px'}}>
-                  <Card.Img src={'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*'} className="d-block square mt-2" height="500" alt={pet.image} />
+                  <Card.Img src={pet.image} className="d-block square mt-2" height="500" alt={pet.image} />
                     <Card.Title className="m-auto"><h1>{pet.name}</h1></Card.Title>
                     <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>
                     <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
