@@ -24,7 +24,3 @@ const Home = () => {
   );
 };
 export default Home;
-
-//signout button  <Button Text="Sign Out" onClick={() => [signout(), navigate("/")]}>
-        // Sign Out
-        // </Button>

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
-//import the delete icon from the images folder
 import deleteImg from "../../../images/delete.png";
-import { Container, Card, Col, Button, Image, Row } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -67,7 +66,6 @@ const EmergencyPage = ({ pet }) => {
         ))}
         
       </div>
-      {/* <div className="empty3"></div> */}
     </div>
   );
 };
