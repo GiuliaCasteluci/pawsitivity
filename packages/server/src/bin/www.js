@@ -11,7 +11,7 @@ import chalk from "chalk"
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { PORT } from "../configs/index.js";
-
+// import { API_URL } from "../../../client/src/";
 
 /**
  * Get port from environment and store in Express.
@@ -88,7 +88,7 @@ function onListening() {
 
   console.log(
     `${chalk.green('✓')} ${chalk.blue(
-      `Listening on port ${port}. Visit ${API_URL}:${port}/ in your browser.`
+      `Listening on port ${port}. Visit http://localhost:3000/:${port}/ in your browser.`
     )}`
   )
 }
