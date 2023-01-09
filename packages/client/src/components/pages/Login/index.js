@@ -16,8 +16,6 @@ const Container = styled.div`
   color: #333;
   line-height: 1.2;
   text-align: center
-
-
 `;
 
 const Content = styled.div`

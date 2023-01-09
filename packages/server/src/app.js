@@ -3,7 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { API_URL, DB_URL } from './configs/index';
-import routes from './routes';
 import router from "./routes/index.js"
 import path from 'path';
 import fileUpload from 'express-fileupload';
@@ -31,7 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.post('/upload', fileUpload(),  (req, res) => {
-  console.log("Is this working")
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
   }

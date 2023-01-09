@@ -12,7 +12,6 @@ const HeaderContainer = styled.header`
         flex-direction: row;
         overflow: hidden;
         padding: 20px 10px;
-
 `
 
 function Header() {

@@ -12,26 +12,30 @@ import ResourcePage from './components/pages/swipe/resourcesPage';
 import AboutPage from './components/pages/swipe/aboutPage';
 import SwipePage from '../src/components/pages/swipe'
 import Likespage from '../src/components/pages/swipe/likes'
+import Header from './components/pages/Header';
+import Footer from './components/Footer/Footer';
+
 
 //background of the page
-const AppContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(90deg, #002F52 35%, #326589);
+ const AppContainer = styled.div`
+   width: 100vw;
+   height: 100vh;
+   background-image: linear-gradient(90deg, #002F52 35%, #326589);
 
-`;
+ `;
 
-const Private = ({ Item }) => {
-  const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
+// const Private = ({ Item }) => {
+//   const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
    
-  const { signed } = loggedUser ? loggedUser.token : ''
+//   const { signed } = loggedUser ? loggedUser.token : ''
 
-  return signed > 0 ? <Item /> : <Login />;
-};
+//   return signed > 0 ? <Item /> : <Login />;
+// };
 
 function App() {
   return (
     <AppContainer>
+      <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -45,8 +49,8 @@ function App() {
           <Route path="/likes" element={<Likespage />} />
           <Route path="/pets/:petId" element={<PetProfile />} />
         </Routes>
+        <Footer />
     </AppContainer>
   );
 }
-
 export default App;
