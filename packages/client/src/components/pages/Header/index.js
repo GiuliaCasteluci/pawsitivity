@@ -37,7 +37,7 @@ function Header() {
           <Navbar.Brand as={Link} to="/home">Pawsitivity</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/petForm">Pet Form</Nav.Link>
+            <Nav.Link as={Link} to="/petForm">Surrender</Nav.Link>
             <Nav.Link as={Link} to="/emergency">Emergency</Nav.Link>
           </Nav>
         </Container>
