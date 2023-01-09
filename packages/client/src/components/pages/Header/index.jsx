@@ -19,7 +19,6 @@ function Header() {
     return (
        <HeaderContainer>
             <HeaderOptions />
-            {/* <Logo /> */}
        </HeaderContainer>
     )
 }
