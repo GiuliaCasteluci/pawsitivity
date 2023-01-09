@@ -4,20 +4,16 @@
  * Module dependencies.
  */
 
-import app from "../app.js";
-// import debug from "server";
-import http from "http";
-import chalk from "chalk"
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import { PORT } from "../configs/index.js";
-
+const app = require('../app')
+const debug = require('debug')('server:server')
+const http = require('http')
+const chalk = require('chalk')
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(PORT)
+const port = normalizePort(process.env.PORT || '3001')
 app.set('port', port)
 
 /**
@@ -85,10 +81,12 @@ function onError(error) {
  */
 
 function onListening() {
-
+  const addr = server.address()
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
+  debug('Listening on ' + bind)
   console.log(
     `${chalk.green('✓')} ${chalk.blue(
-      `Listening on port ${port}. Visit ${API_URL}:${port}/ in your browser.`
+      `Listening on port ${port}. Visit http://localhost:${port}/ in your browser.`
     )}`
   )
 }
