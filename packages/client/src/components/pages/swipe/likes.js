@@ -10,6 +10,7 @@ import glass from './mag.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
+import { API_URL } from "../../../constants";
 
 function LikesPage() {
   const [type, setType] = useState(null)
@@ -26,7 +27,7 @@ function LikesPage() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/pets").then((response) => {
+    axios.get(`${API_URL}/api/pets`).then((response) => {
       setPets(response.data);
     });
   }, []);

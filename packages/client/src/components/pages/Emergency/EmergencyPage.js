@@ -5,19 +5,21 @@ import deleteImg from "../../../images/delete.png";
 import { Container, Card, Col, Button, Image, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import API_URL from '../../constants'
+
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/pets").then((response) => {
+    axios.get(`${API_URL}/api/pets`).then((response) => {
       setLocalPets(response.data);
     });
   }, []);
 
   const handleDelete = (petId) => {
-    axios.delete(`http://localhost:3001/api/pets/${petId}`).then(() => {
+    axios.delete(`${API_URL}/api/pets/${petId}`).then(() => {
       setLocalPets(localPets.filter((pet) => pet._id !== petId));
     });
   };
@@ -39,7 +41,7 @@ const EmergencyPage = ({ pet }) => {
               id="uploaded-image"
               className="my-image"
               variant="top"
-              src={`http://localhost:3001/${image}`}
+              src={`${API_URL}/${image}`}
               alt="pet-image"
             />
             <Card.Body className="my-card-body">

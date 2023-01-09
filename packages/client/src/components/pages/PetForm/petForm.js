@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../Header";
+import API_URL from '../../constants'
 
 const PetFormContainer = styled.div`
   display: flex;
@@ -54,9 +54,9 @@ function PetForm() {
       formData.append("image", formValues.image)
       console.log("How about now?")
 
-      const path = await axios.post("http://localhost:3001/upload", formData);
+      const path = await axios.post(`${API_URL}/upload`, formData);
       console.log(path)
-      const response = await axios.post('http://localhost:3001/api/pets', { ...formValues, image: path.data});
+      const response = await axios.post(`${API_URL}/api/pets`, { ...formValues, image: path.data});
   
       setPets([...pets, response.data]);
 

@@ -26,10 +26,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.post('/upload', fileUpload(),  (req, res) => {
+
+app.post('/upload', fileUpload(), (req, res) => {
   console.log("Is this working")
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
@@ -37,7 +37,7 @@ app.post('/upload', fileUpload(),  (req, res) => {
 
   let image = req.files.image;
 
-  image.mv(path.join(__dirname,`./public/images/${image.name}`), (err) => {
+  image.mv(path.join(__dirname, `./public/images/${image.name}`), (err) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -49,6 +49,16 @@ app.post('/upload', fileUpload(),  (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 })
+
 // app.use(API_URL, routes);
 app.use(API_URL, router);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")))
+  app.all("*", (req, res, next) => {
+    res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
+  })
+}
+
+
 export default app;

@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import LikesPage from "./likes";
 import axios from 'axios'
 import { Carousel } from "react-bootstrap";
+import { API_URL } from "../../../constants";
 
 function SwipePage() {       
       const [type, setType] = useState(null)
@@ -35,7 +36,7 @@ function SwipePage() {
         };
     
         useEffect(() => {
-          axios.get("http://localhost:3001/api/pets").then((response) => {
+          axios.get(`${API_URL}/api/pets`).then((response) => {
             setPets(response.data);
           });
         }, []);    

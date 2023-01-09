@@ -76,3 +76,4 @@ npm install axios
 npm install --save react-toastify
 npm install react-bootstrap 
 npm install mongoose
+npm install -w server path

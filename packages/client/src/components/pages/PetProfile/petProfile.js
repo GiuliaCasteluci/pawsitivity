@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container, Card, Col, Button, Image, Row, Modal } from "react-bootstrap";
 import EditPet from "../../Modal/EditPet";
+import { API_URL } from "../../../constants";
 
 const PetProfile = () => {
   const [pet, setPet] = useState({});
@@ -10,7 +11,7 @@ const PetProfile = () => {
   const { petId } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/pets/${petId}`).then((response) => {
+    axios.get(`${API_URL}/api/pets/${petId}`).then((response) => {
       setPet(response.data);
     });
   }, []);
@@ -36,7 +37,7 @@ const PetProfile = () => {
           id="uploaded-image"
           className="my-image"
           variant="top"
-          src={`http://localhost:3001/${pet.image}`}
+          src={`${API_URL}/${pet.image}`}
           alt="pet-image"
         />
         <Card.Body className="my-card-body">

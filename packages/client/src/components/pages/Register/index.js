@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {useAuth} from "../../../hooks/useAuth";
 import axios from 'axios'
+import { API_URL } from "../../../constants";
 
 const Container = styled.div`
   display: flex;
@@ -94,7 +95,7 @@ const Register = () => {
           errorMessage: 'Password and Password Confirmation must be the same.',
         })
       } else {
-        axios.post('http://localhost:3001/api/auth/signup',
+        axios.post(`${API_URL}/api/auth/signup`,
           {
             username: data.username,
             password: data.password,

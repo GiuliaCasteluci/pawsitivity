@@ -88,7 +88,7 @@ function onListening() {
 
   console.log(
     `${chalk.green('✓')} ${chalk.blue(
-      `Listening on port ${port}. Visit http://localhost:${port}/ in your browser.`
+      `Listening on port ${port}. Visit ${API_URL}:${port}/ in your browser.`
     )}`
   )
 }
