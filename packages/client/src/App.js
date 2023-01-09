@@ -10,7 +10,8 @@ import PetForm from './components/pages/PetForm/petForm';
 import PetProfile from './components/pages/PetProfile/petProfile';
 import ResourcePage from './components/pages/swipe/resourcesPage';
 import AboutPage from './components/pages/swipe/aboutPage';
-
+import SwipePage from '../src/components/pages/swipe'
+import Likespage from '../src/components/pages/swipe/likes'
 
 //background of the page
 const AppContainer = styled.div`
@@ -41,7 +42,7 @@ function App() {
           <Route path="/resources" element={<ResourcePage />} />
           <Route path="/aboutUs" element={<AboutPage />} />
           <Route path="/adopt" element={<SwipePage />} />
-          <Route path="/likes" element={<LikesPage />} />
+          <Route path="/likes" element={<Likespage />} />
           <Route path="/pets/:petId" element={<PetProfile />} />
         </Routes>
     </AppContainer>
