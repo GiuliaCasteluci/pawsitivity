@@ -16,19 +16,12 @@ import Footer from './components/Footer/Footer';
 import HomePage from './components/pages/HomePage/homePage';
 import Header from './components/pages/Header';
 
-//background of the page
+//page background
 const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(90deg, #002F52 35%, #326589);
 `;
-
-//   return signed > 0 ? <Item /> : <Login />;
-// };
-// const Private = ({ Item }) => {
-//   const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
-
-//   const { signed } = loggedUser ? loggedUser.token : ''
 
 function App() {
   return (

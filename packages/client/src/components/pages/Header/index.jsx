@@ -1,25 +1,38 @@
-// import Logo from '../../Logo'
-import HeaderOptions from '../HeaderOptions';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
-
-//HeaderContainer involves  the entire heading 
-// components are written with upper case letters
 const HeaderContainer = styled.header`
-        background-color: #FFF;
-        display: flex;
-        gap: 800px;
-        flex-direction: row;
-        overflow: hidden;
-        padding: 20px 10px;
-`
+image.png
+`;
 
 function Header() {
-    return (
-       <HeaderContainer>
-            <HeaderOptions />
-       </HeaderContainer>
-    )
+  return (
+    <HeaderContainer>
+      <>
+        <Navbar>
+          <Container>
+            <Navbar.Brand as={Link} to="/homePage">
+              Pawsitivity
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/login">
+                Login
+              </Nav.Link>
+              <Nav.Link as={Link} to="/petForm">
+                Surrender
+              </Nav.Link>
+              <Nav.Link as={Link} to="/emergency">
+                Emergency
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      </>
+    </HeaderContainer>
+  );
 }
 
 export default Header;
