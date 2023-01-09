@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import PetForm from "../models/petFormModel";
+import PetForm from "../../models/petFormModel";
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -8,13 +8,13 @@ router.route("/", (req, res) => {
   res.status(200).send("api endpoint");
 });
 
-// All routes start with the API_URL (default '/api')
-router.get("/", async (req, res, next) => {
+
+router.get("/", async(req, res, next) => {
   try {
     const allPets = await PetForm.find();
 
     res.json(allPets)
-
+    
   } catch (error) {
     next(error)
   }
@@ -65,7 +65,6 @@ router.get('/api/pets', async (req, res) => {
   }
 });
 
-
 router.get('/:id', async (request, response, next) => {
   try {
     const pet = await PetForm.findById(request.params.id);
@@ -76,8 +75,7 @@ router.get('/:id', async (request, response, next) => {
 });
 
 router.patch('/:id', async (request, response, next) => {
-  // const { pet } = request.body;
-  console.log(request);
+console.log(request);
   try {
     const updated = await PetForm.findByIdAndUpdate(request.params.id, request.body, {
       new: true,

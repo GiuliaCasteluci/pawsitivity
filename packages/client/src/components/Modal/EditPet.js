@@ -6,7 +6,6 @@ import axios from "axios";
 import { ToastContainer } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {API_URL} from '../../constants'
 
 function EditPet({ onHide, pet, updatePet, ...props}) {
   const [editPet, setEditPet] = useState({});
@@ -41,8 +40,8 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
     try {
       const formData = new FormData()
       formData.append("image", formValues.image)
-      const path = await axios.post(`${API_URL}/upload`, formData);
-      const response = await axios.patch(`${API_URL}/pets/${pet._id}`, { ...formValues, image: path.data});
+      const path = await axios.post("http://localhost:3001/upload", formData);
+      const response = await axios.patch(`http://localhost:3001/api/pets/${pet._id}`, { ...formValues, image: path.data});
       updatePet(response.data);
       onHide();
       toast.success("New pet information saved!");
@@ -140,4 +139,5 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
     </>
   );
 }
+
 export default EditPet;

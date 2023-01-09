@@ -12,6 +12,9 @@ import ResourcePage from './components/pages/swipe/resourcesPage';
 import AboutPage from './components/pages/swipe/aboutPage';
 import SwipePage from '../src/components/pages/swipe'
 import Likespage from '../src/components/pages/swipe/likes'
+import Footer from './components/Footer/Footer';
+import HomePage from './components/pages/HomePage/homePage';
+import Header from './components/pages/Header';
 
 //background of the page
 const AppContainer = styled.div`
@@ -20,30 +23,32 @@ const AppContainer = styled.div`
   background-image: linear-gradient(90deg, #002F52 35%, #326589);
 `;
 
-// const Private = ({ Item }) => {
-//   const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
-   
-//   const { signed } = loggedUser ? loggedUser.token : ''
-
 //   return signed > 0 ? <Item /> : <Login />;
 // };
+// const Private = ({ Item }) => {
+//   const loggedUser = JSON.parse(localStorage.getItem('MernAppUser'))
+
+//   const { signed } = loggedUser ? loggedUser.token : ''
 
 function App() {
   return (
     <AppContainer>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route path="*" element={<Home />} /> 
-          {/* the user will be redirected to the login page  with path="*"   */}
-          <Route path="/emergency" element={<EmergencyPage />} />
-          <Route path="/petForm" element={<PetForm />} />
-          <Route path="/resources" element={<ResourcePage />} />
-          <Route path="/aboutUs" element={<AboutPage />} />
-          <Route path="/adopt" element={<SwipePage />} />
-          <Route path="/likes" element={<Likespage />} />
-          <Route path="/pets/:petId" element={<PetProfile />} />
-        </Routes>
+      <Header />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route path="*" element={<Home />} />
+        {/* the user will be redirected to the login page  with path="*"   */}
+        <Route path="/emergency" element={<EmergencyPage />} />
+        <Route path="/petForm" element={<PetForm />} />
+        <Route path="/resources" element={<ResourcePage />} />
+        <Route path="/aboutUs" element={<AboutPage />} />
+        <Route path="/adopt" element={<SwipePage />} />
+        <Route path="/likes" element={<Likespage />} />
+        <Route path="/pets/:petId" element={<PetProfile />} />
+        <Route path="/homePage" element={<HomePage />} />
+      </Routes>
+      <Footer/> 
     </AppContainer>
   );
 }
