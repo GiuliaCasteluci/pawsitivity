@@ -47,14 +47,12 @@ function PetForm() {
   }
 
   async function handleSubmit(event) {
-    console.log("hello?")
     event.preventDefault();
     try {
       const formData = new FormData()
       formData.append("image", formValues.image)
-      console.log("How about now?")
 
-      const path = await axios.post(`${API_URL}/upload`, formData);
+      const path = await axios.post(`${API_URL}/files/upload`, formData);
       console.log(path)
       const response = await axios.post(`${API_URL}/api/pets`, { ...formValues, image: path.data});
   

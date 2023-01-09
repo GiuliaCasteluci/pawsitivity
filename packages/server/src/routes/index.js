@@ -17,5 +17,4 @@ router.use("/files", fileUploader, fileRoutes)
 
 module.exports = router
 
-export default router;
 

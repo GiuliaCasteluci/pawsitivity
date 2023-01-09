@@ -9,7 +9,7 @@ const getUserToken = () => {
 
 // configure axios instance
 const instance = axios.create({
-  baseURL: `API_URL`,
+  baseURL: API_URL,
 })
 
 instance.defaults.headers.post['Content-Type'] = 'application/json'

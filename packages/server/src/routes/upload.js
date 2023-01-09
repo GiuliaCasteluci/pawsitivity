@@ -26,4 +26,4 @@ fileRoutes.post('/upload', (req, res) => {
  
 });
 
-export default fileRoutes
+export default fileRoutes;
