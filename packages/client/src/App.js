@@ -5,10 +5,8 @@ import Home from './components/pages/Home';
 import { Route, Routes } from "react-router-dom";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login"
-import SwipePage from './components/pages/swipe';
 import EmergencyPage from './components/pages/Emergency/EmergencyPage';
 import PetForm from './components/pages/PetForm/petForm';
-import LikesPage from './components/pages/swipe/likes';
 import PetProfile from './components/pages/PetProfile/petProfile';
 
 

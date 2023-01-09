@@ -3,18 +3,20 @@ import styled from "styled-components";
 import Header from '../Header'
 import { Link } from "react-router-dom";
 import { useProvideAuth } from "../../../hooks/useAuth";
+import HeaderOptions from '../HeaderOptions';
 
+const HeaderContainer = styled.div`
+
+`
+
+// sign and signout container
 const Container = styled.div`
 display: block;
 color: white;
-text-align: center;
-padding: 14px 16px;
 text-decoration: none;
-background: white;
 `;
 
 const Title = styled.h2`
-  
 `;
 
 const Button = styled.button`
@@ -34,15 +36,14 @@ const Home = () => {
   } = useProvideAuth()
 
   return (
-    <Container>
+    <HeaderContainer>
       <Header />
+      <Container>
       <Link to="/login">&nbsp;Sign In</Link>
-      <Link to='/petForm'>&nbsp;Pet Form</Link>
-      <Link to='/emergency'>&nbsp;Emergency</Link>
-      <Link to='/adopt'>&nbsp;Swipe</Link>
       {user ? <Button variant='outline-info' id='activate' onClick={() => signout()}>Sign Out</Button> : null}
-      
     </Container>
+    </HeaderContainer>
+    
   );
 };
 export default Home;
