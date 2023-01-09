@@ -6,7 +6,7 @@ import axios from "axios";
 import { ToastContainer } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import API_URL from '../../constants'
+import {API_URL} from '../../constants'
 
 function EditPet({ onHide, pet, updatePet, ...props}) {
   const [editPet, setEditPet] = useState({});

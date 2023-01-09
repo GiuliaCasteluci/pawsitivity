@@ -5,7 +5,7 @@ import deleteImg from "../../../images/delete.png";
 import { Container, Card, Col, Button, Image, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import API_URL from '../../constants'
+import {API_URL} from '../../../constants.js'
 
 
 const EmergencyPage = ({ pet }) => {
