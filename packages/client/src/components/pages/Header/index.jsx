@@ -1,4 +1,4 @@
-import Logo from '../../Logo'
+// import Logo from '../../Logo'
 import HeaderOptions from '../HeaderOptions';
 import styled from 'styled-components';
 
@@ -18,7 +18,6 @@ const HeaderContainer = styled.header`
 function Header() {
     return (
        <HeaderContainer>
-            <Logo />
             <HeaderOptions />
        </HeaderContainer>
     )
