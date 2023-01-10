@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import deleteImg from "../../../images/delete.png";
-import { Card, Button, } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import "./style.css";
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/pets").then((response) => {
@@ -30,10 +29,13 @@ const EmergencyPage = ({ pet }) => {
       </Link>
       <div
         className="d-flex flex-wrap justify-content-evenly m-auto"
-        style={{ width: "90vw" }}
+        style={{ width: "90vw"
+       }}
       >
         {localPets.map(({ petType, name, age, gender, image, _id }) => (
-          <Card style={{ height: "400px", width: "300px", marginBottom: '40px' }}>
+          <Card
+            style={{ height: "400px", width: "300px", marginBottom: "40px" }}
+          >
             <Card.Img
               id="uploaded-image"
               className="my-image"
@@ -50,7 +52,7 @@ const EmergencyPage = ({ pet }) => {
                   <li>{gender}</li>
                 </ul>
                 <Link to={`/pets/${_id}`}>
-                  <Button variant="primary">See profile</Button>
+                <Button class="btn2" type="submit">See Profile</Button>
                 </Link>
                 <Button
                   variant="primary"
@@ -63,7 +65,6 @@ const EmergencyPage = ({ pet }) => {
             </Card.Body>
           </Card>
         ))}
-
       </div>
     </div>
   );
