@@ -3,12 +3,18 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PetForm from "../pages/PetForm/petForm";
 import axios from "axios";
-import { ToastContainer } from "react-bootstrap";
+// import { ToastContainer } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
+import ToastContainer from 'react-bootstrap/ToastContainer'
+
 function EditPet({ onHide, pet, updatePet, ...props}) {
   const [editPet, setEditPet] = useState({});
+  // const [show, setShow] = useState(false);
   const [show, setShow] = useState(false);
   const [formValues, setFormValues] = useState({
     petType: "",
@@ -44,7 +50,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
       const response = await axios.patch(`http://localhost:3001/api/pets/${pet._id}`, { ...formValues, image: path.data});
       updatePet(response.data);
       onHide();
-      toast.success("New pet information saved!");
+      setShow(true);
     } catch (error) {
       console.log(error);
     }
@@ -54,6 +60,25 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
 
   return (
 <>
+
+<Row>
+<ToastContainer position='top-end'>
+      <Col xs={12}>
+        <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            /><small>3 seconds ago</small>
+          </Toast.Header>
+          <Toast.Body>You successfully updated your pets information.</Toast.Body>
+        </Toast>
+      </Col>
+      </ToastContainer>
+    </Row>
+    
+
     <Modal
       {...props}
       size="lg"
@@ -135,7 +160,6 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         <Button onClick={handleSubmit}>Update</Button>
       </Modal.Footer>
     </Modal>
-    <ToastContainer />
     </>
   );
 }

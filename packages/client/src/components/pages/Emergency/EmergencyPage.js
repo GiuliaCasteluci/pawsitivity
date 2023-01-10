@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
-//import the delete icon from the images folder
+// import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import deleteImg from "../../../images/delete.png";
-import { Container, Card, Col, Button, Image, Row } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/pets").then((response) => {
@@ -35,7 +35,9 @@ const EmergencyPage = ({ pet }) => {
       >
         {localPets.map(({ petType, name, age, gender, image, _id }) => (
           //  key={_id}>
-          <Card style={{ height: "400px", width: "300px", marginBottom: '40px'}}>
+          <Card
+            style={{ height: "400px", width: "300px", marginBottom: "40px" }}
+          >
             <Card.Img
               id="uploaded-image"
               className="my-image"
@@ -54,20 +56,26 @@ const EmergencyPage = ({ pet }) => {
                 <Link to={`/pets/${_id}`}>
                   <Button variant="primary">See profile</Button>
                 </Link>
-                <Button
-                  variant="primary"
-                  onClick={() => handleDelete(_id)}
-                  style={{ background: "transparent", border: "none" }}
-                >
-                  <img src={deleteImg} alt="Delete icon" />
-                </Button>
+
+                <Dropdown>
+                  <Dropdown.Toggle
+                    style={{ background: "transparent", border: "none" }}
+                    id="dropdown-basic"
+                  >
+                    <img src={deleteImg} alt="Delete icon" />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => handleDelete(_id)}>
+                      Delete Pet
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Card.Text>
             </Card.Body>
           </Card>
         ))}
-        
       </div>
-      {/* <div className="empty3"></div> */}
     </div>
   );
 };

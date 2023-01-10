@@ -36,7 +36,7 @@ const PetProfile = () => {
         updatePet={updatePet}
       />
 
-<Card style={{height: '400px', width: '300px', marginTop: "100px", marginBottom: "10px"}}>
+<Card style={{height: '400px', width: '300px', marginTop: "100px", marginBottom: "100px"}}>
             <Card.Img
               id="uploaded-image"
               className="my-image"
