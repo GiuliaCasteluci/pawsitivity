@@ -45,13 +45,13 @@ form {
 }
 
 button {
-  /* padding: 10px 20px;
+  padding: 10px 20px;
   height: 50px;
   width: 100%;
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 18px; */
+  font-size: 18px;
   cursor: pointer;
   background-color: rgb(5, 54, 158);
   color: white;
@@ -77,9 +77,9 @@ input {
   content: " • ";
 }
 
-/* .my-card-body {
+.my-card-body {
   text-align: center;
-} */
+}
 
 
 .pet-profile {
