@@ -54,7 +54,6 @@ const LabelError = styled.label`
   border-radius: 4px;
   outline: 0;
   border: 1px solid rgba(245, 245, 245, 0.7);
-
 `;
 
 const Strong = styled.strong`
