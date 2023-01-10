@@ -15,7 +15,6 @@ function ResourcePage() {
   return (
 
     <span className="page">
-        <ToastContainer></ToastContainer>
         <Navbar className="nav" variant="light">
             <Container>
                 <Navbar.Brand href="#home">
@@ -40,17 +39,11 @@ function ResourcePage() {
                 </NavDropdown>
             </Container>
         </Navbar>
-
-        <div className="mt-5 bg-light m-auto">
-            <Card className="d-flex flex-row">
-                    <Card.Title>Me</Card.Title>
-                    <Card.Text>Me Details</Card.Text>
+        <Container className="mt-5 m-auto">
+            <Card className="m-auto">
+                <Card.Title className="m-auto">Title</Card.Title>
             </Card>
-            <Card className="d-flex flex-row">
-                    <Card.Title>Me</Card.Title>
-                    <Card.Text>Me Details</Card.Text>
-            </Card>
-        </div>
+        </Container>
     </span>
 
   );
