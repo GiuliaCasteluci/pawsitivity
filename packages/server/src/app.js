@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 app.use(API_URL, router);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "../../client/build")));
   app.all("*", (req, res, next) => {
     res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
   });
