@@ -92,11 +92,12 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <form onSubmit={handleSubmit}>
+      <form className="modal-form" onSubmit={handleSubmit}>
         <h1>Surrender Pet</h1>
         <label className="formLabels">
           Pet Type:
           <input
+          className="form-control"
             type="text"
             name="petType"
             required
@@ -108,6 +109,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         <label className="formLabels">
           Name:
           <input
+          className="form-control"
             type="text"
             name="name"
             required
@@ -119,6 +121,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         <label className="formLabels">
           Age:
           <input
+          className="form-control"
             type="text"
             name="age"
             required
@@ -130,6 +133,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         <label className="formLabels">
           Gender:
           <input
+          className="form-control"
             type="text"
             name="gender"
             required
@@ -141,6 +145,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         <label className="formLabels">
           Description:
           <input
+          className="form-control"
             type="text"
             name="description"
             required
@@ -151,7 +156,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
         </label>
         <label className="formLabels">
           Image:
-          <input type="file" name="image" multiple required onChange={handleChange} />
+          <input className="form-control" type="file" name="image" multiple required onChange={handleChange} />
         </label>
         </form>
       </Modal.Body>

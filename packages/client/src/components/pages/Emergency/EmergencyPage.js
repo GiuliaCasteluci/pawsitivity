@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import deleteImg from "../../../images/delete.png";
 import { Card, Button } from "react-bootstrap";
@@ -9,7 +8,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
-  // const location = useLocation();
+
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/pets").then((response) => {
