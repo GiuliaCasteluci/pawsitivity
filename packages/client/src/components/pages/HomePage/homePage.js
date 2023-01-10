@@ -7,7 +7,7 @@ import techcrunch from "../../../images/TechCrunch.png";
 import tnw from "../../../images/tnw.png";
 import ham from "../../../images/iphone6ham.png";
 
-const homePage = () => {
+const HomePage = () => {
   return (
     <>
       <section id="title">
@@ -132,4 +132,4 @@ const homePage = () => {
   );
 };
 
-export default homePage;
+export default HomePage;
