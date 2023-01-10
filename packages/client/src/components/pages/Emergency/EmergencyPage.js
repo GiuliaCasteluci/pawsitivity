@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import deleteImg from "../../../images/delete.png";
 import { Card, Button, } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";

@@ -10,6 +10,8 @@ const PetFormContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: #fdf9f3;
+
   /* Add this to center the labels */
   .formLabels {
     display: flex;

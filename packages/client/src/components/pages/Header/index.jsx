@@ -20,7 +20,13 @@ function Header() {
       <HeaderContainer>
         <Navbar>
           <Nav.Link as={Link} to="/login">
-            Sign In to see all of our features
+            Sign In
+          </Nav.Link>
+        </Navbar>
+
+        <Navbar>
+          <Nav.Link as={Link} to="/register">
+            Click to Register
           </Nav.Link>
         </Navbar>
       </HeaderContainer>
