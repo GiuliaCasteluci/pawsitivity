@@ -18,17 +18,24 @@ function Header() {
   if (!user) {
     return (
       <HeaderContainer>
+        <>
         <Navbar>
-          <Nav.Link as={Link} to="/login">
-            Sign In
-          </Nav.Link>
+          <Container>
+            <Navbar.Brand as={Link} to="/homePage">
+              Pawsitivity
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/login">
+                Sign In
+              </Nav.Link>
+             
+              <Nav.Link as={Link} to="/register">
+                Register
+              </Nav.Link>
+            </Nav>
+          </Container>
         </Navbar>
-
-        <Navbar>
-          <Nav.Link as={Link} to="/register">
-            Click to Register
-          </Nav.Link>
-        </Navbar>
+        </>
       </HeaderContainer>
     );
   }
