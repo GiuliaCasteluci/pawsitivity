@@ -13,12 +13,11 @@ router.get("/", async (req, res, next) => {
   try {
     const allPets = await PetForm.find();
 
-    res.json(allPets)
-
+    res.json(allPets);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.post("/", async (request, response, next) => {
   const { petType, name, age, gender, description, image } = request.body;
@@ -56,7 +55,7 @@ router.delete("/:id", async (request, response, next) => {
 });
 
 // not working , works in postman
-router.get('/api/pets', async (req, res) => {
+router.get("/api/pets", async (req, res) => {
   try {
     const pets = await PetForm.find().sort({ dateAdded: -1 });
     res.json(pets);
@@ -65,8 +64,7 @@ router.get('/api/pets', async (req, res) => {
   }
 });
 
-
-router.get('/:id', async (request, response, next) => {
+router.get("/:id", async (request, response, next) => {
   try {
     const pet = await PetForm.findById(request.params.id);
     response.json(pet);
@@ -75,14 +73,18 @@ router.get('/:id', async (request, response, next) => {
   }
 });
 
-router.patch('/:id', async (request, response, next) => {
+router.patch("/:id", async (request, response, next) => {
   // const { pet } = request.body;
   console.log(request);
   try {
-    const updated = await PetForm.findByIdAndUpdate(request.params.id, request.body, {
-      new: true,
-      runValidators: true,
-    });
+    const updated = await PetForm.findByIdAndUpdate(
+      request.params.id,
+      request.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
     console.log(updated);
 
     response.json(updated);
