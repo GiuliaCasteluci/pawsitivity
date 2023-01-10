@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "../../../components/Input";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "../../../hooks/useAuth";
 import axios from "axios";
 import { API_URL } from "../../../constants";
 
@@ -95,7 +94,6 @@ const Register = () => {
   const [data, setData] = useState(initialState)
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const auth = useAuth();
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
