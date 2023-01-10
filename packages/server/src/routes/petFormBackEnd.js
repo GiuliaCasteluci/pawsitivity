@@ -1,5 +1,6 @@
 import express, { response } from "express";
-import { PetForm } from "../models";
+import PetForm from "../models/petFormModel";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -8,17 +9,15 @@ router.route("/", (req, res) => {
 });
 
 // All routes start with the API_URL (default '/api')
-
-router.get("/", async(req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const allPets = await PetForm.find();
 
-    res.json(allPets)
-    
+    res.json(allPets);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.post("/", async (request, response, next) => {
   const { petType, name, age, gender, description, image } = request.body;
@@ -30,7 +29,9 @@ router.post("/", async (request, response, next) => {
       age,
       gender,
       description,
-      image
+      image,
+      dateAdded: new Date(),
+      _id: new mongoose.Types.ObjectId(),
     });
 
     const savedPet = await pet.save();
@@ -44,13 +45,55 @@ router.post("/", async (request, response, next) => {
   }
 });
 
+router.delete("/:id", async (request, response, next) => {
+  try {
+    const post = await PetForm.findByIdAndDelete(request.params.id);
+    response.json(post);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// not working , works in postman
+router.get("/api/pets", async (req, res) => {
+  try {
+    const pets = await PetForm.find().sort({ dateAdded: -1 });
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/:id", async (request, response, next) => {
+  try {
+    const pet = await PetForm.findById(request.params.id);
+    response.json(pet);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch("/:id", async (request, response, next) => {
+  console.log(request);
+  try {
+    const updated = await PetForm.findByIdAndUpdate(
+      request.params.id,
+      request.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    console.log(updated);
+
+    response.json(updated);
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.get("/", (req, res) => {
   res.status(200).send("petform endpoint");
 });
-
-
-
-
 
 module.exports = router;

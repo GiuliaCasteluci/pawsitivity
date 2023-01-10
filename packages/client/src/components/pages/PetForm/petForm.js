@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../Header";
+import {API_URL} from '../../../constants.js'
 
 const PetFormContainer = styled.div`
   display: flex;
@@ -10,6 +10,8 @@ const PetFormContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: #fdf9f3;
+
   /* Add this to center the labels */
   .formLabels {
     display: flex;
@@ -47,16 +49,14 @@ function PetForm() {
   }
 
   async function handleSubmit(event) {
-    console.log("hello?")
     event.preventDefault();
     try {
       const formData = new FormData()
       formData.append("image", formValues.image)
-      console.log("How about now?")
 
-      const path = await axios.post("http://localhost:3001/upload", formData);
+      const path = await axios.post(`${API_URL}/upload`, formData);
       console.log(path)
-      const response = await axios.post('http://localhost:3001/api/pets', { ...formValues, image: path.data});
+      const response = await axios.post(`${API_URL}/pets`, { ...formValues, image: path.data});
   
       setPets([...pets, response.data]);
 
@@ -65,6 +65,7 @@ function PetForm() {
       console.log(error);
     }
   }
+  
 
   return (
     <PetFormContainer>

@@ -31,7 +31,6 @@
 
       if (password) {
         const hashedCurrentPassword = await bcrypt.hash(currentPassword, 12);
-
         try {
           const hashedpassword = await bcrypt.hash(password, 12);
           const userUpdate = await User.findByIdAndUpdate(

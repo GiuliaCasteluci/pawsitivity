@@ -23,12 +23,6 @@ const userSchema = new mongoose.Schema({
       ref: 'Post',
     },
   ],
-  postLikes: [
-    {
-      type: ObjectId,
-      ref: 'Post',
-    },
-  ],
 })
 
 const User = mongoose.model('User', userSchema)

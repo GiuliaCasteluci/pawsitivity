@@ -6,19 +6,24 @@
   "scripts": {
     "server": "npm run start --workspace=server",
     "client": "npm run start --workspace=client",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "build": "npm run build --workspace=client && npm run build --workspace=server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^7.3.0"
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.20"
   },
   "workspaces": [
     "packages/server",
     "packages/client"
   ],
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.3",
     "axios": "^1.2.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
@@ -26,9 +31,12 @@
     "express-fileupload": "^1.4.0",
     "express-list-endpoints": "^6.0.0",
     "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.3",
     "react-bootstrap": "^2.7.0",
     "react-router-dom": "^6.6.1",
     "react-toastify": "^9.1.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   }
 }

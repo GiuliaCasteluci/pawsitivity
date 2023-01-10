@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import mongoose from 'mongoose'
 import { jwtConfig } from '../configs'
 import { User } from '../models/users'
 

@@ -3,33 +3,30 @@ import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
-import paws from './PawsLogo.png'
-import heart from './heart.png'
-import cancel from './cancel.png'
-import glass from './mag.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
+import { API_URL } from "../../../constants";
 
-function LikesPage() { 
-    const [type, setType] = useState(null)
-    const [likes, setArray] = useState([])
-    const [pets, setPets] = useState([])
-      
-      const handleKeyDown = (event) => {
-        if(event.key === 'ArrowLeft' || event.target.id === 'next'){
-          setType(event)
-        } else if(event.key === 'ArrowRight' || event.target.id === 'like'){
-          setType(event)
-        } 
-        
-      };
-  
-      useEffect(() => {
-        axios.get("http://localhost:3001/api/pets").then((response) => {
-          setPets(response.data);
-        });
-      }, []);    
+function LikesPage() {
+  const [type, setType] = useState(null)
+  const [likes, setArray] = useState([])
+  const [pets, setPets] = useState([])
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowLeft' || event.target.id === 'next') {
+      setType(event)
+    } else if (event.key === 'ArrowRight' || event.target.id === 'like') {
+      setType(event)
+    }
+
+  };
+
+  useEffect(() => {
+    axios.get(`${API_URL}/api/pets`).then((response) => {
+      setPets(response.data);
+    });
+  }, []);
 
   return (
 
@@ -37,7 +34,7 @@ function LikesPage() {
       <ToastContainer></ToastContainer>
       <Navbar className="nav" variant="light">
         <Container>
-          <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
             <img
               alt=""
               src={paws}
@@ -47,10 +44,10 @@ function LikesPage() {
           </Navbar.Brand>
           <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
           <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
-              <NavDropdown.Item href="/likes">
-                Liked Pets
-              </NavDropdown.Item>
+            <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
+            <NavDropdown.Item href="/likes">
+              Liked Pets
+            </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/petForm">Surrender</Nav.Link>
           <NavDropdown title="Resources" id="navbarScrollingDropdown">
@@ -59,8 +56,7 @@ function LikesPage() {
           </NavDropdown>
         </Container>
       </Navbar>
-        <div>
-        <div>
+      <div className="mt-5">
         <Container className="d-flex flex-wrap">
         {pets.map(pet => (
                 <Card  className="d-flex m-auto mt-5 p-1" style={{width: '500px'}}>
@@ -69,15 +65,11 @@ function LikesPage() {
                     <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>
                     <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
                     <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
-                    <img className='circleIcon m-auto' id="seeProfile" onClick={handleKeyDown} alt='See' src={glass}/>
                 </Card>
         ))}
         </Container>
         </div>
-        </div>
-    </span>
-
-  );
-}
+</span>
+)}
 
 export default LikesPage;
