@@ -44,30 +44,6 @@ function AboutPage() {
   return (
     <span className="page">
       <ToastContainer></ToastContainer>
-      <Navbar className="nav" variant="light">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src={paws}
-              height="30"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-          <Nav.Link className="ps-5" href="/">
-            Home
-          </Nav.Link>
-          <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
-            <NavDropdown.Item href="/likes">Liked Pets</NavDropdown.Item>
-          </NavDropdown>
-          <Nav.Link href="/petForm">Surrender</Nav.Link>
-          <NavDropdown title="Resources" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="/resources">Pet Resources</NavDropdown.Item>
-            <NavDropdown.Item href="/aboutUs">About Us</NavDropdown.Item>
-          </NavDropdown>
-        </Container>
-      </Navbar>
       <div className="d-flex flex-wrap justify-content-evenly">
         {us.map((member) => (
           <Card className="d-flex m-auto mt-5 p-3" style={{ width: "22vw" }}>
