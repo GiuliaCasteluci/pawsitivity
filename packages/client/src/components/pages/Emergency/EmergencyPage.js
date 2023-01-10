@@ -4,11 +4,12 @@ import deleteImg from "../../../images/delete.png";
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "./style.css";
+import Dropdown from "react-bootstrap/Dropdown";
 import { API_URL } from "../../../constants";
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
+
 
   useEffect(() => {
     axios.get(`${API_URL}/pets`).then((response) => {
@@ -56,13 +57,21 @@ const EmergencyPage = ({ pet }) => {
                     See Profile
                   </Button>
                 </Link>
-                <Button
-                  variant="primary"
-                  onClick={() => handleDelete(_id)}
-                  style={{ background: "transparent", border: "none" }}
-                >
-                  <img src={deleteImg} alt="Delete icon" />
-                </Button>
+
+                <Dropdown>
+                  <Dropdown.Toggle
+                    style={{ background: "transparent", border: "none" }}
+                    id="dropdown-basic"
+                  >
+                    <img src={deleteImg} alt="Delete icon" />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => handleDelete(_id)}>
+                      Delete Pet
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Card.Text>
             </Card.Body>
           </Card>

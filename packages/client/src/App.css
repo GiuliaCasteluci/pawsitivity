@@ -47,14 +47,24 @@ form {
 button {
   padding: 10px 20px;
   height: 50px;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
+  width: 150px;
+  border-radius: 20px;
   font-weight: bold;
   font-size: 18px;
   cursor: pointer;
   background-color: #ff4c68;
   color: white;
+  margin-top: 10px;
+}
+
+.petFormButton {
+  background-color: #ff4c68;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
 }
 
 input {
@@ -76,11 +86,6 @@ input {
 .my-list li::before {
   content: " • ";
 }
-
-.my-card-body {
-  text-align: center;
-}
-
 
 .pet-profile {
   display: flex;
@@ -112,7 +117,8 @@ nav.navbar {
   width: 280px;
   height: 300px;
   text-align: center;
-
+  margin: auto;
+  
 }
 
 .emergency-page-h2 {
@@ -124,6 +130,18 @@ nav.navbar {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.5;
+}
+
+.petFormH2 {
+  text-align: center;
+    color: #fff;
+    background-color: #ff4c68;
+    padding-bottom: 20px;
+    font-family: "Montserrat";
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 100vw;
 }
 
 .btn.btn-primary.return-petform {
@@ -149,6 +167,15 @@ nav.navbar {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+  width: 100%;
 }
 
 /* homepagecss */
@@ -364,4 +391,9 @@ div.empty6:empty {
 
 .navbar-light .navbar-brand {
   color: #fff;
+}
+
+.navbar-light .navbar-brand {
+  color: #fff;
+  font-size: 3rem;
 }
