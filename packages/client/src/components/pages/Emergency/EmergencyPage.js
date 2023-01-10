@@ -52,9 +52,9 @@ const EmergencyPage = ({ pet }) => {
                   <li>{gender}</li>
                 </ul>
                 <Link to={`/pets/${_id}`}>
-                  {/* <Button class="btn2" type="submit">
+                  <Button class="btn2" type="submit">
                     See Profile
-                  </Button> */}
+                  </Button>
                 </Link>
                 <Button
                   variant="primary"
