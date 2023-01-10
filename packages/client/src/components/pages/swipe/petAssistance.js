@@ -15,6 +15,30 @@ function assistancePage() {
 return(
     <span className="page">
       <ToastContainer></ToastContainer>
+      <Navbar className="nav" variant="light">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src={paws}
+              height="30"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+          <Nav.Link className="ps-5" href='/'>Home</Nav.Link>
+          <NavDropdown title="Adoption" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/adopt">Swipe</NavDropdown.Item>
+              <NavDropdown.Item href="/likes">
+                Liked Pets ({pets.length})
+              </NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="/petForm">Surrender</Nav.Link>
+          <NavDropdown title="Resources" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/adopt">Pet Assistance</NavDropdown.Item>
+              <NavDropdown.Item href="/likes">About Us</NavDropdown.Item>
+          </NavDropdown>
+        </Container>
+      </Navbar>
         <Container className=" m-auto mt-2 d-flex flex-column" style={{width: '50%'}}>
         </Container>
     </span>
