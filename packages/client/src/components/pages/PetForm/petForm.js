@@ -26,6 +26,7 @@ const PetFormContainer = styled.div`
     width: 100%;
   }
 `;
+
 function PetForm() {
   const [formValues, setFormValues] = useState({
     petType: "",
@@ -48,12 +49,10 @@ function PetForm() {
   }
 
   async function handleSubmit(event) {
-    console.log("hello?")
     event.preventDefault();
     try {
       const formData = new FormData()
       formData.append("image", formValues.image)
-      console.log("How about now?")
 
       const path = await axios.post(`${API_URL}/upload`, formData);
       console.log(path)
@@ -66,6 +65,7 @@ function PetForm() {
       console.log(error);
     }
   }
+  
 
   return (
     <PetFormContainer>
