@@ -7,7 +7,6 @@ import { useProvideAuth } from "../../../hooks/useAuth";
 
 const Container = styled.div`
   box-sizing: border-box;
-  background: #fdf9f3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +14,7 @@ const Container = styled.div`
   text-align: center;
   color: #f03d4e;
   border: 1px solid rgba(245, 245, 245, 0.7);
+  margin-bottom: 4rem;
 `;
 
 const Content = styled.div`
@@ -54,7 +54,6 @@ const LabelError = styled.label`
   border-radius: 4px;
   outline: 0;
   border: 1px solid rgba(245, 245, 245, 0.7);
-
 `;
 
 const Strong = styled.strong`

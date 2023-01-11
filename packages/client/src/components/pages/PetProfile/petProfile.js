@@ -34,41 +34,29 @@ const PetProfile = () => {
         updatePet={updatePet}
       />
 
-      <Card
-        style={{
-          height: "400px",
-          width: "300px",
-          marginTop: "100px",
-          marginBottom: "10px",
-        }}
-      >
-        <Card.Img
-          id="uploaded-image"
-          className="my-image"
-          variant="top"
-          src={`${API_URL}/${pet.image}`}
-          alt="pet-image"
-        />
-        <Card.Body className="my-card-body">
-          <Card.Title>{pet.name}</Card.Title>
-          <Card.Text>
-            <ul className="my-list">
-              <li>{pet.petType}</li>
-              <li>{pet.age}</li>
-              <li>{pet.gender}</li>
-              <li>{pet.description}</li>
-            </ul>
-          </Card.Text>
-        </Card.Body>
-        <Button
-          style={{ marginBottom: "10px" }}
-          variant="primary"
-          onClick={() => setShow(true)}
-        >
-          Edit
-        </Button>
-      </Card>
-    </div>
+<Card style={{height: '400px', width: '300px', marginTop: "100px", marginBottom: "100px"}}>
+            <Card.Img
+              id="uploaded-image"
+              className="my-image"
+              variant="top"
+              src={`http://localhost:3001/${pet.image}`}
+              alt="pet-image"
+            />
+            <Card.Body className="my-card-body">
+              <Card.Title>{pet.name}</Card.Title>
+              <Card.Text>
+                <ul className="my-list">
+                  <li>{pet.petType}</li>
+                  <li>{pet.age}</li>
+                  <li>{pet.gender}</li>
+                  <li>{pet.description}</li>
+                </ul>
+              </Card.Text>
+            </Card.Body>
+            <Button style={{marginBottom: '10px'}} variant="primary" onClick={() => setShow(true)}>Edit</Button>
+          </Card>
+          </div>
+
   );
 };
 

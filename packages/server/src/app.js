@@ -17,7 +17,7 @@ mongoose.connection.on("connected", () => {
 });
 
 mongoose.connection.on("error", (err) => {
-  console.log("err connecting", err);
+  console.log("err connecting", err);image.png
 });
 
 const app = express();
@@ -45,16 +45,12 @@ app.post("/api/upload", fileUpload(), (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
 app.use(API_URL, router);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "../../client/build")));
   app.all("*", (req, res, next) => {
-    res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+    res.sendFile(path.resolve(__dirname, "../../client/build/index.html"));
   });
 }
 

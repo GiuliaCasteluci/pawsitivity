@@ -19,7 +19,6 @@ import Header from './components/pages/Header';
 const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  /* background-image: linear-gradient(90deg, #002F52 35%, #326589); */
 `;
 
 function App() {
@@ -27,6 +26,7 @@ function App() {
     <AppContainer>
       < Header />
       <Routes>
+        <Route exact path="/" basename="home" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route path="*" element={<HomePage />} />
@@ -38,7 +38,7 @@ function App() {
         <Route path="/adopt" element={<SwipePage />} />
         <Route path="/likes" element={<Likespage />} />
         <Route path="/pets/:petId" element={<PetProfile />} />
-        {/* <Route path="/homePage" element={<HomePage />} /> */}
+        <Route path="/homePage" element={<HomePage />} />
       </Routes>
       <Footer/> 
     </AppContainer>
