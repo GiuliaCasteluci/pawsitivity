@@ -74,7 +74,6 @@ router.get("/:id", async (request, response, next) => {
 });
 
 router.patch("/:id", async (request, response, next) => {
-  // const { pet } = request.body;
   console.log(request);
   try {
     const updated = await PetForm.findByIdAndUpdate(

@@ -9,10 +9,7 @@ const PetFormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: #fdf9f3;
-
-  /* Add this to center the labels */
+  // height: 100vh;
   .formLabels {
     display: flex;
     flex-direction: column;
@@ -26,6 +23,7 @@ const PetFormContainer = styled.div`
     width: 100%;
   }
 `;
+
 function PetForm() {
   const [formValues, setFormValues] = useState({
     petType: "",
@@ -48,12 +46,10 @@ function PetForm() {
   }
 
   async function handleSubmit(event) {
-    console.log("hello?")
     event.preventDefault();
     try {
       const formData = new FormData()
       formData.append("image", formValues.image)
-      console.log("How about now?")
 
       const path = await axios.post(`${API_URL}/upload`, formData);
       console.log(path)
@@ -66,11 +62,14 @@ function PetForm() {
       console.log(error);
     }
   }
+  
 
   return (
     <PetFormContainer>
+      <div>
+      <h2 className="petFormH2">Surrender Pet</h2>
+      </div>
       <form onSubmit={handleSubmit}>
-        <h1>Surrender Pet</h1>
         <label className="formLabels">
           Pet Type:
           <input
@@ -79,6 +78,7 @@ function PetForm() {
             required
             value={formValues.petType}
             onChange={handleChange}
+            placeholder='Dog, Cat, etc.'
           />
         </label>
         <label className="formLabels">
@@ -89,6 +89,7 @@ function PetForm() {
             required
             value={formValues.name}
             onChange={handleChange}
+            placeholder='Name of pet'
           />
         </label>
         <label className="formLabels">
@@ -99,6 +100,7 @@ function PetForm() {
             required
             value={formValues.age}
             onChange={handleChange}
+            placeholder='Age of pet'
           />
         </label>
         <label className="formLabels">
@@ -109,6 +111,7 @@ function PetForm() {
             required
             value={formValues.gender}
             onChange={handleChange}
+            placeholder='Pets gender'
           />
         </label>
 
@@ -120,6 +123,7 @@ function PetForm() {
             required
             value={formValues.description}
             onChange={handleChange}
+            placeholder='Reason for surrendering pet'
           />
         </label>
 
@@ -128,9 +132,10 @@ function PetForm() {
           <input type="file" name="image" multiple required onChange={handleChange} />
         </label>
         <label className="formLabels">
-          <button type="submit">Submit</button>
+          <button className="petFormButton" type="submit">Submit</button>
         </label>
       </form>
+      
     </PetFormContainer>
   );
 }

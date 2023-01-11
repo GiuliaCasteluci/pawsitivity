@@ -116,9 +116,9 @@ const HomePage = () => {
       </section>
 
       <section id="cta">
-        <h3 classname="ctah3">
+        <h2 classname="ctah3">
           Find your newest addition to your family today!
-        </h3>
+        </h2>
         <div class="text-center">
           <button type="button" class="btn btn-dark btn-lg download-button">
             <i class="fab fa-apple"></i> Download

@@ -48,9 +48,6 @@ function Header() {
               Pawsitivity
             </Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/login">
-                Sign In
-              </Nav.Link>
               <Nav.Link as={Link} to="/petForm">
                 Emergency Surrender
               </Nav.Link>

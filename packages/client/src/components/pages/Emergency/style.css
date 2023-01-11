@@ -1,4 +1,4 @@
-.seeProfileBtn {
+.btn2 {
     background-color: #EA4C89;
     border-radius: 8px;
     border-style: none;
@@ -25,7 +25,7 @@
     touch-action: manipulation;
 }
 
-.seeProfileBtn:hover,
-.seeProfileBtn:focus {
+.btn2:hover,
+.btn2:focus {
     background-color: #F082AC;
 }

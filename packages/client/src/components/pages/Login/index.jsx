@@ -140,14 +140,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// The initialState object contains initial values for the username, password, isSubmitting, and errorMessage fields.
-// The useState hook is used to manage the state of the form data and keep track of the input fields, including username and password.
-// The useNavigate hook is used to navigate to a different page after a successful login.
-// The useProvideAuth hook is used to interact with the authentication service.
-// When the component is rendered, it checks if the user is already logged in. 
-// If so, it displays a message and a link to the home page. If not, it renders the login form. 
-// The form has two input fields, one for the username and one for the password. When the form is submitted,  the handleLogin function is called. 
-// This function performs form validation, and if the form is valid, it makes a call to the signin method of the auth object to log the user in. 
-// If the login is successful, it sets an authentication token and redirects the user to the home page. 
-// If there is an error, it sets the error message to be displayed.
