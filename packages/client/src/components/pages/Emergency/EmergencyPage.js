@@ -10,7 +10,6 @@ import { API_URL } from "../../../constants";
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
 
-
   useEffect(() => {
     axios.get(`${API_URL}/pets`).then((response) => {
       setLocalPets(response.data);
