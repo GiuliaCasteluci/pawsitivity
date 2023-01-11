@@ -1,6 +1,7 @@
 import express, { response } from "express";
 import PetForm from "../models/petFormModel";
 import mongoose from "mongoose";
+import { Toast } from "bootstrap";
 
 const router = express.Router();
 
@@ -91,6 +92,24 @@ router.patch("/:id", async (request, response, next) => {
     next(error);
   }
 });
+
+// router.all('/like/:petId', async (request, response) => {
+//   const {petId} = request.params
+//   const {user} = request
+//   const {pet} = await PetForm.findOne({_id: petId})
+  
+//   if (!pet) {
+//     return response.status(422).json({ error: 'Cannot find pet' })
+//   }
+//   try {
+//     if (user.postLikes.includes(pet)){
+//       Toast.error('Pet already in your likes')
+//     } else {
+//       const result = 
+//       $push:
+//     }
+//   }
+// })
 
 router.get("/", (req, res) => {
   res.status(200).send("petform endpoint");
