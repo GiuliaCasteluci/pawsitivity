@@ -8,12 +8,21 @@ import 'react-toastify/dist/ReactToastify.css'
 import LikesPage from "./likes";
 import axios from 'axios'
 import { Carousel } from "react-bootstrap";
+import heart from "./heart.png"
+import cancel from "./cancel.png"
+import { useProvideAuth } from "../../../hooks/useAuth";
 
 function SwipePage() {       
       const [type, setType] = useState(null)
       const [likes, setArray] = useState([])
       const [pets, setPets] = useState([])
     
+      const {
+        state: { user },
+      } = useProvideAuth()
+      
+      console.log(user)
+
       useEffect(() => {
         axios.get("http://localhost:3001/api/pets").then((response) => {
           setPets(response.data);
@@ -27,8 +36,11 @@ function SwipePage() {
             {
             pets.length >= 2 ? 
             <Carousel
+            className="d-flex justify-content-evenly"            
             interval={null} 
             indicators=''
+            nextIcon={<img src={heart} style={{width: '50px', marginBottom: '200px'}}></img>}
+            prevIcon={<img src={cancel} style={{height: '50px', marginBottom: '200px'}}></img>}
             slide={false}
             onSlid={(index, direction)=> {
               if(direction === 'start' && index === 0){
@@ -51,12 +63,12 @@ function SwipePage() {
             {pets.map(pet => {
               return (
               <Carousel.Item >
-                <Card className="d-flex m-auto mt-5 p-3" style={{width: '50vw'}}>
+                <Card className="d-flex m-auto p-3" style={{width: '50vw'}}>
                   <Card.Img src={pet.image} className="d-block square mt-2" height="500" alt={pets.indexOf(pet)} />                  
                     <Card.Title className="m-auto d-flex">
-                      <h1>{pet.name}</h1>
+                      <h3>{pet.name}</h3>
                     </Card.Title>
-                    <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>
+                    <Card.Subtitle className="m-auto"><h6>Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</h6></Card.Subtitle>
                     <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
                     <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
                 </Card>

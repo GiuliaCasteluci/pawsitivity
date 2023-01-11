@@ -8,20 +8,15 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 import { API_URL } from "../../../constants";
+import { useProvideAuth } from "../../../hooks/useAuth";
 
 function LikesPage() {
   const [type, setType] = useState(null)
   const [likes, setArray] = useState([])
   const [pets, setPets] = useState([])
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowLeft' || event.target.id === 'next') {
-      setType(event)
-    } else if (event.key === 'ArrowRight' || event.target.id === 'like') {
-      setType(event)
-    }
-
-  };
+    const {
+    state: { user },
+  } = useProvideAuth()
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/pets").then((response) => {
@@ -36,7 +31,7 @@ function LikesPage() {
       <div className="mt-5">
         <Container className="d-flex flex-wrap">
         {pets.map(pet => (
-                <Card  className="d-flex m-auto mt-5 p-1" style={{width: '350px'}}>
+                <Card  className="d-flex m-auto mt-2 p-2 mb-5" style={{width: '350px'}}>
                   <Card.Img src={pet.image} className="d-block square mt-2" height="500" alt={pet.image} />
                     <Card.Title className="m-auto"><h1>{pet.name}</h1></Card.Title>
                     <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>

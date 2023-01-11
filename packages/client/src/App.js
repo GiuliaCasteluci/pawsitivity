@@ -16,10 +16,7 @@ import HomePage from './components/pages/HomePage/homePage';
 import Header from './components/pages/Header';
 
 //page background
-const AppContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-`;
+const AppContainer = styled.div``;
 
 function App() {
   return (
