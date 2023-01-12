@@ -6,6 +6,7 @@ import mashable from "../../../images/mashable.png";
 import techcrunch from "../../../images/TechCrunch.png";
 import tnw from "../../../images/tnw.png";
 import ham from "../../../images/iphone6ham.png";
+import './style.css'
 
 const HomePage = () => {
   return (
