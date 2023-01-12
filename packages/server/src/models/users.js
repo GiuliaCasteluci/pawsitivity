@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
       ref: 'Post',
     },
   ],
+  postLikes: [{
+    type: String,
+  }]
 })
 
 const User = mongoose.model('User', userSchema)

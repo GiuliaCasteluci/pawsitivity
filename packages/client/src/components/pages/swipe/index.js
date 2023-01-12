@@ -5,12 +5,13 @@ import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Button, Modal} fro
 import paws from './PawsLogo.png'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import LikesPage from "./likes";
 import axios from 'axios'
 import { Carousel } from "react-bootstrap";
 import heart from "./heart.png"
 import cancel from "./cancel.png"
 import { useProvideAuth } from "../../../hooks/useAuth";
+import { API_URL } from "../../../constants";
+
 
 function SwipePage() {       
       const [type, setType] = useState(null)
@@ -20,14 +21,29 @@ function SwipePage() {
       const {
         state: { user },
       } = useProvideAuth()
-      
-      console.log(user)
 
       useEffect(() => {
-        axios.get("http://localhost:3001/api/pets").then((response) => {
-          setPets(response.data);
-        });
-      }, []);      
+        axios.get("http://localhost:3001/api/like")
+            .then((response) => {
+                if (response.status === 200 && response.data) {
+                    setPets(response.data);
+                } else {
+                    console.error("Error fetching pets:", response);
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching pets:", error);
+            });
+      }, []);
+
+      // useEffect(() => {
+      //   console.log('hello')
+      //   axios.get(`http://localhost:3001/api/pets`).then((response) => {
+      //   console.log('yurrr')  
+      //   setPets(response.data);
+          
+      //   });
+      // }, []);      
   return (
 
     <span className="page ">
@@ -44,17 +60,35 @@ function SwipePage() {
             slide={false}
             onSlid={(index, direction)=> {
               if(direction === 'start' && index === 0){
-                setPets(pets.filter(pet => pet._id !== pets[pets.length-1]._id))
+                // try{
+                //   axios.put(`http://localhost:3001/api/like/${pets[pets.length-1]._id}/${user.uid}`)
+                // } catch (error) {
+                //   console.log(error)
+                //   return error
+                // }             
+                // setPets(pets.filter(pet => pet._id !== pets[pets.length-1]._id))
                 toast.success(`${pets[pets.length-1].name} was added to likes`)
               } else if(direction === 'end' && index === (pets.length-1)){
                 console.log(0)
                 setPets(pets.filter(pet => pet._id !== pets[0]._id))
                 toast.error(`${pets[0].name} was disliked`)
               } else if(direction === 'start'){
-                setPets(pets.filter(pet => pet._id !== pets[index-1]._id))
+                console.log(pets[index-1]._id)
+                // try{
+                //   let schema = {
+                //     user: user.uid,
+                //     pet: pets[index-1]._id,
+                //   }
+                //   axios.put(`http://localhost:3001/api/like/${pets[index-1]._id}`, schema)
+                // } catch (error) {
+                //   console.log(error)
+                //   return error
+                // }        
+                // setPets(pets.filter(pet => pet._id !== pets[index-1]._id))
                 toast.success(`${pets[index-1].name} was added to likes`)
               } else if(direction === 'end'){
                 console.log((index + 1))
+                console.log(user.postLikes)
                 setPets(pets.filter(pet => pet._id !== pets[index+1]._id))
                 toast.error(`${pets[index+1].name} was disliked`)
               }
@@ -77,7 +111,7 @@ function SwipePage() {
             </Carousel>
 
             : 
-            <Card className="d-flex m-auto mt-5 p-3" style={{width: '50vw'}}>
+            <Card className="d-flex m-auto mt-5 mb-5 p-3" style={{width: '50vw'}}>
                     <Card.Title className="m-auto mt-5"><h1>More Pets Coming Soon!!</h1></Card.Title>
                     <Card.Subtitle className="m-auto">COME BACK SOON</Card.Subtitle>
                 </Card>

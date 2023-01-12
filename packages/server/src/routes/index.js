@@ -3,6 +3,7 @@ import petFormBackEnd from "./petFormBackEnd";
 import fileRoutes from "./upload";
 import fileUploader from "express-fileupload";
 import authRouter from "./auth";
+import likes from './likes'
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.get("/", (req, res, next) => {
 router.use("/auth", authRouter);
 router.use("/pets", petFormBackEnd);
 router.use("/files", fileUploader, fileRoutes);
+router.use('/like', likes)
 
 module.exports = router;
