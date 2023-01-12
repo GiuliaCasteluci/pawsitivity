@@ -46,10 +46,7 @@ function Header() {
             </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/petForm">
-                Emergency Surrender
-              </Nav.Link>
-              <Nav.Link as={Link} to="/emergency">
-                Available Pets
+                Surrender
               </Nav.Link>
               <NavDropdown title="Adoption" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} className="text-center" to="/adopt">

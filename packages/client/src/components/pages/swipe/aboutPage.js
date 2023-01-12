@@ -4,6 +4,7 @@ import { Container, Nav, Navbar, NavDropdown, Card } from "react-bootstrap";
 import paws from "./PawsLogo.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Giulia from './IMG_5776.jpg'
 
 let us = [
   {
@@ -16,8 +17,7 @@ let us = [
   },
   {
     name: "Giulia",
-    image:
-      "https://img.freepik.com/free-vector/botanical-capital-letter-g-vector_53876-168112.jpg?w=2000",
+    image: Giulia,
     role: "Product Owner",
     about: "",
     links: [],
@@ -67,25 +67,11 @@ function AboutPage() {
                   alt="developer"
                 />
               ))}
-              <img
-                className="circleIcon"
-                src={
-                  "https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-portfolio-icon-png-image_695874.jpg"
-                }
-                alt="developer"
-              />
-              <img
+              <a href="https://github.com/GiuliaCasteluci" target={'_blank'}><img
                 className="circleIcon"
                 src={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
                 alt="developer"
-              />
-              <img
-                className="circleIcon"
-                src={
-                  "https://image.similarpng.com/very-thumbnail/2020/06/Black-icon-Twitter-logo-transparent-PNG.png"
-                }
-                alt="developer"
-              />
+              /></a>
             </div>
           </Card>
         ))}
