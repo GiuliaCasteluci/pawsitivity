@@ -193,7 +193,7 @@ const Register = () => {
         <LabelSignin>
           Already signed up?
           <Strong>
-            <Link to="/register">&nbsp;Sign in</Link>
+            <Link to="/login">&nbsp;Sign in</Link>
           </Strong>
         </LabelSignin>
       </Content>
