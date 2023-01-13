@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.css-hlnzui-MuiTypography-root{
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  text-align: right;
+  font-size: 2rem;
+  color: white;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

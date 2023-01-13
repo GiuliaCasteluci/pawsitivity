@@ -52,14 +52,14 @@ export default function ChatWindow() {
 
   return (
     <div>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Card
-          sx={{
+        <Box sx={{ marginBottom: '20vh', marginTop: '20vh',display: "flex", justifyContent: "center" }}>
+        <Card 
+          sx ={{
             padding: 2,
             mariginTop: 10,
             width: "60%",
             backgroundColor: "#ff4c68",
-            color: "#ffffff;",
+            color: "#ffffff",
             height: "50%",
           }}
         >
@@ -85,7 +85,7 @@ export default function ChatWindow() {
                 Typing....
               </InputLabel>
             )}
-            <OutlinedInput
+            <OutlinedInput 
               sx={{
                 color: "black",
                 backgroundColor: "white",

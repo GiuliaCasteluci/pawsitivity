@@ -10,7 +10,7 @@ const ChatPage = () => {
 
   return (
     <div>
-      Chat Page
+      <h1 className="emergency-page-h2">Chat</h1>
       <ChatWindow />
     </div>
   );

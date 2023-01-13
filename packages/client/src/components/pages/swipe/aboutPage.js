@@ -4,9 +4,10 @@ import { Container, Card } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Giulia from "./IMG_5776.jpg";
-import Dre from "./Dre.png";
+import Dre from "./Dre.jpg";
 import June from "./me.jpg";
 import Nina from "../../../images/nina.png"
+
 
 let inPic =
   "https://www.edigitalagency.com.au/wp-content/uploads/new-linkedin-logo-white-black-png.png";
