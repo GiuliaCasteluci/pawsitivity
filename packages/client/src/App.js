@@ -15,6 +15,10 @@ import Footer from './components/Footer/Footer';
 import HomePage from './components/pages/HomePage/homePage';
 import Header from './components/pages/Header';
 
+// Chat
+// import Container from "@mui/material/Container";
+// import ChatWindow from "./components/Chat/ChatWindow";
+import ChatPage from './components/pages/ChatPage/ChatPage';
 //page background
 const AppContainer = styled.div``;
 
@@ -36,6 +40,7 @@ function App() {
         <Route path="/likes" element={<Likespage />} />
         <Route path="/pets/:petId" element={<PetProfile />} />
         <Route path="/homePage" element={<HomePage />} />
+        <Route path='/Chat' element={<ChatPage/>} />
       </Routes>
       <Footer/> 
     </AppContainer>
