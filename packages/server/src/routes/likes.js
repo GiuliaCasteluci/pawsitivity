@@ -23,7 +23,9 @@ router.patch('/:id', async (request, response) => {
     const user = await User.findById(userId)
 
     console.log(pet)
-    console.log(user.postLikes.includes(pet))
+    // console.log(user.postLikes.includes(pet))
+    // console.log(user.postLikes.find({uid: {$exists: true, $nin: userId}}))
+
     
 
     if(!pet) {
@@ -44,6 +46,7 @@ router.patch('/:id', async (request, response) => {
 router.get("/likes/:id", async (request, response, next) => {
   const userId = request.params.id
   const user = await User.findById(userId)
+
   try{
     response.json(user.postLikes)
 } catch (err) {

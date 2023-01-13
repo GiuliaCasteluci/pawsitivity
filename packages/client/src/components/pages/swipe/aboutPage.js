@@ -8,6 +8,8 @@ import Giulia from './IMG_5776.jpg'
 import Dre from './Dre.png'
 import June from './me.jpg'
 
+let inPic = 'https://www.edigitalagency.com.au/wp-content/uploads/new-linkedin-logo-white-black-png.png'
+
 let us = [
   {
     name: "June",
@@ -15,6 +17,7 @@ let us = [
     role: "Quality Assurance Tester",
     about: "",
     links: 'blank',
+    linked: 'https://www.linkedin.com/in/june-avina/'
   },
   {
     name: "Giulia",
@@ -29,6 +32,7 @@ let us = [
     role: "Scrum Master",
     about: "",
     links: 'https://github.com/DreLouis2',
+    linked: 'https://www.linkedin.com/in/drelouis2/'
   },
   {
     name: "Nina",
@@ -59,13 +63,30 @@ function AboutPage() {
             </Card.Title>
             <Card.Subtitle className="m-auto">{member.role}</Card.Subtitle>
             <Card.Text className="m-auto">{member.about}</Card.Text>
-            <div className="d-flex flex-row justify-content-evenly m-2">
+            
+            {member.linked? 
+            <Container className="d-flex flex-row justify-content-evenly m-2">
               <a href={member.links} target={'_blank'}><img
                 className="circleIcon"
                 src={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
                 alt="developer"
               /></a>
-            </div>
+              <a href={member.linked} target={'_blank'}><img
+                className="circleIcon"
+                src={inPic}
+                alt="developer"
+              /></a>
+              </Container>
+              :
+              <Container className="d-flex flex-row justify-content-evenly m-2">
+              <a href={member.links} target={'_blank'}><img
+                className="circleIcon"
+                src={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
+                alt="developer"
+              /></a>
+              </Container>
+                    } 
+            
           </Card>
         ))}
       </div>
