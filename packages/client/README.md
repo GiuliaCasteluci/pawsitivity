@@ -77,3 +77,4 @@ npm install --save react-toastify
 npm install react-bootstrap 
 npm install mongoose
 npm install -w server path
+npm install socket.io

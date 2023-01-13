@@ -1,14 +1,12 @@
 {
-  "name": "mern-starter-template",
   "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
     "server": "npm run start --workspace=server",
     "client": "npm run start --workspace=client",
-    "start": "nodemon index.js",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "build": "npm run build --workspace=client && npm run build --workspace=server"
   },
@@ -18,7 +16,6 @@
   "devDependencies": {
     "concurrently": "^7.3.0",
     "nodemon": "^2.0.20"
-
   },
   "workspaces": [
     "packages/server",
@@ -35,8 +32,10 @@
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-list-endpoints": "^6.0.0",
+    "install": "^0.13.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
+    "npm": "^9.3.0",
     "react-bootstrap": "^2.7.0",
     "react-router-dom": "^6.6.1",
     "react-toastify": "^9.1.1",

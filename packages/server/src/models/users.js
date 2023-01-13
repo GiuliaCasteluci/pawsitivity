@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
     unique: false,
     required: true,
   },
-  profile_image: { type: String, default: '/fox.svg' },
   posts: [
     {
       type: ObjectId,
