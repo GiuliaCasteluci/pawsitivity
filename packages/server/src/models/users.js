@@ -15,15 +15,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: false,
     required: true,
-  },
-  posts: [
-    {
-      type: ObjectId,
-      ref: 'Post',
-    },
-  ],
-  postLikes: {
-    type: Array,
   }
 })
 

@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Button, Modal} from "react-bootstrap";
-import paws from './PawsLogo.png'
+import {Container , Card} from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
@@ -49,8 +48,8 @@ console.log(user)
             className="d-flex justify-content-evenly"            
             interval={null} 
             indicators=''
-            nextIcon={<img src={heart} style={{width: '50px', marginBottom: '200px'}}></img>}
-            prevIcon={<img src={cancel} style={{height: '50px', marginBottom: '200px'}}></img>}
+            nextIcon={<img src={heart} style={{width: '50px', marginBottom: '200px'}} alt="img"></img>}
+            prevIcon={<img src={cancel} style={{height: '50px', marginBottom: '200px'}} alt="img"></img>}
             slide={false}
             onSlid={(index, direction)=> {
               if(direction === 'start' && index === 0){

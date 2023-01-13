@@ -78,3 +78,6 @@ npm install react-bootstrap
 npm install mongoose
 npm install -w server path
 npm install socket.io
+npm install socket.io-client
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
