@@ -2,9 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, Container , Nav, Navbar, Row, NavDropdown, Card, Toast} from "react-bootstrap";
-import paws from './PawsLogo.png'
-import { ToastContainer, toast } from 'react-toastify'
+import {Container, Card} from "react-bootstrap";
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 import { API_URL } from "../../../constants";
@@ -20,7 +19,7 @@ function LikesPage() {
 
 
 useEffect(() => {
-      axios.get(`http://localhost:3001/api/like/likes/${user.uid}`).then((response) => {
+      axios.get(`${API_URL}/like/likes/${user.uid}`).then((response) => {
       setPets(response.data);
     })
   }, []);
