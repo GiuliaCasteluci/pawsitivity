@@ -36,8 +36,8 @@ router.patch('/:id', async (request, response) => {
     }}
 );
 
-router.get("/likes", async (request, response, next) => {
-  const userId = request.body.user
+router.get("/likes/:id", async (request, response, next) => {
+  const userId = request.params.id
   const user = await User.findById(userId)
   try{
     console.log(user)

@@ -12,14 +12,15 @@ import { useProvideAuth } from "../../../hooks/useAuth";
 
 function LikesPage() {
   const [pets, setPets] = useState([])
+
     const {
     state: { user },
   } = useProvideAuth()
 
-console.log(user)
+
 
 useEffect(() => {
-      axios.get(`http://localhost:3001/api/like/likes`).then((response) => {
+      axios.get(`http://localhost:3001/api/like/likes/${user.uid}`).then((response) => {
       setPets(response.data);
     })
   }, []);
@@ -35,8 +36,8 @@ useEffect(() => {
                   <Card.Img src={pet.image} className="d-block square mt-2" height="500" alt={pet.image} />
                     <Card.Title className="m-auto"><h1>{pet.name}</h1></Card.Title>
                     <Card.Subtitle className="m-auto">Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</Card.Subtitle>
-                    <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
-                    <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
+                    <Card.Text className="m-auto text-dark">Age: {pet.age}</Card.Text>
+                    <Card.Text className="m-auto text-dark">Gender: {pet.gender}</Card.Text>
                 </Card>
         ))}
         </Container>

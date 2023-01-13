@@ -21,6 +21,7 @@ function SwipePage() {
       const {
         state: { user },
       } = useProvideAuth()
+console.log(user)
 
       useEffect(() => {
         axios.get("http://localhost:3001/api/like")
@@ -65,7 +66,7 @@ function SwipePage() {
                 toast.success(`${pets[pets.length-1].name} was added to likes`)
               } else if(direction === 'end' && index === (pets.length-1)){
                 console.log(0)
-                setPets(pets.filter(pet => pet._id !== pets[0]._id))
+                // setPets(pets.filter(pet => pet._id !== pets[0]._id))
                 toast.error(`${pets[0].name} was disliked`)
               } else if(direction === 'start'){
                 try{
@@ -83,7 +84,7 @@ function SwipePage() {
               } else if(direction === 'end'){
                 console.log((index + 1))
                 console.log(user.postLikes)
-                setPets(pets.filter(pet => pet._id !== pets[index+1]._id))
+                // setPets(pets.filter(pet => pet._id !== pets[index+1]._id))
                 toast.error(`${pets[index+1].name} was disliked`)
               }
             }}
