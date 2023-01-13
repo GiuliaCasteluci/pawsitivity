@@ -31,7 +31,7 @@ const EmergencyPage = ({ pet }) => {
 
   return (
     <div>
-      <h1 className="emergency-page-h2">Emergency Page</h1>
+      <h1 className="emergency-page-h2">Available Pets</h1>
       <Link to="/petform" className="btn btn-primary return-petform">
         Add another pet
       </Link>
