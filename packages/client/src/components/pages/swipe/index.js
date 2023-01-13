@@ -79,7 +79,7 @@ console.log(user)
                   console.log(error)
                   return error
                 }        
-                // setPets(pets.filter(pet => pet._id !== pets[index-1]._id))
+               setPets(pets.filter(pet => pet._id !== pets[index-1]._id))
                 toast.success(`${pets[index-1].name} was added to likes`)
               } else if(direction === 'end'){
                 console.log((index + 1))

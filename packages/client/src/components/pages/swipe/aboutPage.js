@@ -44,7 +44,7 @@ function AboutPage() {
   return (
     <span className="page">
       <ToastContainer></ToastContainer>
-      <div className="d-flex flex-wrap justify-content-evenly">
+      <div className="d-flex mb-5 flex-wrap justify-content-evenly">
         {us.map(member => (
           <Card className="d-flex m-auto mt-5 p-3" style={{ width: "22vw" }}>
             <Card.Img
