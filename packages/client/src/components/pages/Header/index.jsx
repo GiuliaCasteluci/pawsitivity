@@ -60,6 +60,7 @@ function Header() {
           <NavDropdown title="Resources" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} className="text-center" to="/resources">Pet Care</NavDropdown.Item>
               <NavDropdown.Item as={Link} className="text-center" to="/aboutUs">About Us</NavDropdown.Item>
+              <NavDropdown.Item as={Link} className="text-center" to="/Chat">Chat</NavDropdown.Item>
           </NavDropdown>
             </Nav>
             <Nav.Link variant="outline-info" onClick={() => signout()}>

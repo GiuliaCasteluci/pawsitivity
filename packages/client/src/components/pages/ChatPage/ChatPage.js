@@ -1,17 +1,15 @@
 import React from "react";
 import ChatWindow from "../../../components/Chat/ChatWindow";
-import Chat from "../../../components/Chat/ChatWindow";
 import { useProvideAuth } from "../../../hooks/useAuth";
 
 const ChatPage = () => {
+  const {
+    state: { user },
+  } = useProvideAuth();
+  console.log(user);
 
-    const {
-        state: {user},
-    } = useProvideAuth();
-    console.log(user);
-    
   return (
-    <div >
+    <div>
       Chat Page
       <ChatWindow />
     </div>
@@ -19,4 +17,3 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
-

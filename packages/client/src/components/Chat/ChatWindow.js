@@ -61,7 +61,6 @@ export default function ChatWindow() {
             backgroundColor: "#ff4c68",
             color: "#ffffff;",
             height: "50%",
-            
           }}
         >
           <Box sx={{ marginBottom: 5 }}>
@@ -86,7 +85,6 @@ export default function ChatWindow() {
                 Typing....
               </InputLabel>
             )}
-
             <OutlinedInput
               sx={{
                 color: "black",
@@ -111,7 +109,6 @@ export default function ChatWindow() {
                   </IconButton>
                 </InputAdornment>
               }
-              // label="Password"
             />
           </Box>
         </Card>
