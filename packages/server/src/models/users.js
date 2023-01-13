@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: false,
     required: true,
+  },
+  postLikes: {
+    type: Array,
   }
 })
 
