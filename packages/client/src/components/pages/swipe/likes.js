@@ -18,7 +18,7 @@ function LikesPage() {
   } = useProvideAuth();
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/like/likes/${user.uid}`)
+      .get(`${API_URL}/like/likes/${user.uid}`)
       .then((response) => {
         setPets(response.data);
       });
