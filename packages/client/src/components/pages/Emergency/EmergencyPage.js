@@ -69,7 +69,7 @@ const EmergencyPage = ({ pet }) => {
                     style={{ background: "transparent", border: "none" }}
                     id="dropdown-basic"
                   >
-                    <img src={deleteImg} alt="Delete icon" />
+                    <img style={{marginLeft: '15px'}} src={deleteImg} alt="Delete icon" />
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
