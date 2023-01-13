@@ -6,9 +6,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { API_URL } from "../../../constants";
+import { useProvideAuth, useAuth } from "../../../hooks/useAuth";
+import { useRequireAuth } from "../../../hooks/useRequireAuth";
 
 const EmergencyPage = ({ pet }) => {
   const [localPets, setLocalPets] = useState([]);
+  const { state } = useProvideAuth();
+
+  const {
+    state: { isAuthenticated },
+  } = useRequireAuth();
 
   useEffect(() => {
     axios.get(`${API_URL}/pets`).then((response) => {
@@ -62,7 +69,7 @@ const EmergencyPage = ({ pet }) => {
                     style={{ background: "transparent", border: "none" }}
                     id="dropdown-basic"
                   >
-                    <img src={deleteImg} alt="Delete icon" />
+                    <img style={{marginLeft: '15px'}} src={deleteImg} alt="Delete icon" />
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>

@@ -309,10 +309,10 @@ p {
 }
 
 .title-image {
-  width: 15%;
+  width: 45%;
   transform: rotate(25deg);
   position: absolute;
-  left: 62%;
+  left: 30%;
 }
 
 
@@ -396,4 +396,12 @@ div.empty6:empty {
 .navbar-light .navbar-brand {
   color: #fff;
   font-size: 3rem;
+}
+
+.text-center-footer {
+  color: #000;
+}
+
+.signin-p {
+  color: #fff
 }

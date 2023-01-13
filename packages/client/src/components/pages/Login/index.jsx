@@ -78,7 +78,7 @@ const Login = () => {
                   <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                     <div class="text w-100">
                       <h2>Want to adopt a pet </h2>
-                      <p>and you don't have an account yet?</p>
+                      <p className="signin-p">and you don't have an account yet?</p>
                       <Link to="/register">&nbsp;Register Here</Link>
                     </div>
                   </div>
