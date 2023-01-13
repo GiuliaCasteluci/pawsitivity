@@ -21,6 +21,11 @@ router.patch('/:id', async (request, response) => {
     const userId = request.body.user
     const pet = await PetForm.findById(request.body.pet)
     const user = await User.findById(userId)
+
+    console.log(pet)
+    console.log(user.postLikes.includes(pet))
+    
+
     if(!pet) {
       response.status(422).json({error: 'Cant find pet'})
     }  if (user.postLikes.includes(pet)){
@@ -40,7 +45,6 @@ router.get("/likes/:id", async (request, response, next) => {
   const userId = request.params.id
   const user = await User.findById(userId)
   try{
-    console.log(user)
     response.json(user.postLikes)
 } catch (err) {
   next(err)

@@ -98,8 +98,8 @@ console.log(user)
                       <h3>{pet.name}</h3>
                     </Card.Title>
                     <Card.Subtitle className="m-auto"><h6>Type: {(pet.petType).charAt(0).toUpperCase() + (pet.petType).slice(1)}</h6></Card.Subtitle>
-                    <Card.Text className="m-auto">Age: {pet.age}</Card.Text>
-                    <Card.Text className="m-auto">Gender: {pet.gender}</Card.Text>
+                    <Card.Text className="m-auto text-dark">Age: {pet.age}</Card.Text>
+                    <Card.Text className="m-auto text-dark">Gender: {pet.gender}</Card.Text>
                 </Card>
                 </Carousel.Item>
             )})}

@@ -60,7 +60,7 @@ function ResourcePage() {
               />
               </a>
               <Card.Title className="m-auto">
-                Dog Care
+                Cat Care
               </Card.Title>
               <a href="https://www.petmd.com/cat/pet-lover/tips-first-30-days-after-adopting-cat" style={{textDecoration: 'none'}}><Card.Text target="_blank" className="m-auto text-dark">Tips for New Cat Care</Card.Text></a>
           </Card>
