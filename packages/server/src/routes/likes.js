@@ -3,6 +3,7 @@ import PetForm from "../models/petFormModel";
 import mongoose from "mongoose";
 import User from "../models/users";
 
+
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -15,7 +16,7 @@ router.get("/", async (req, res, next) => {
     }
   });
 
-router.put('/:id', async (request, response) => {
+router.patch('/:id', async (request, response) => {
 
     const userId = request.body.user
     const pet = await PetForm.findById(request.body.pet)
@@ -23,49 +24,26 @@ router.put('/:id', async (request, response) => {
     if(!pet) {
       response.status(422).json({error: 'Cant find pet'})
     }  if (user.postLikes.includes(pet)){
+        console.log( 'error: Pet liked already')
         response.json({error: 'Pet liked already'})
       } try{
-        console.log(user.postLikes)
-        user.postLikes.push('me')
-        user.save()
-        console.log(user.postLikes)
-        response.status(200)
-        // user.postLikes.push(request.body.pet)
-        // await user.save()
-        //  db.users.findOneAndUpdate(
-        //    {_id: userId},
-        //    {$push: {"postLikes": pet._id}}
-        // ).save()
-        // response.status(200)
+        let updated = await User.findByIdAndUpdate(
+           {_id: userId},
+           {$push: {postLikes: pet}})
+           response.json(updated)
     } catch (err) {
       return response.status(422).json({ error: err})
     }}
 );
 
-//   router.post('/:petId', async (request, response) => {
-//   const {user} = request.body
-//   const {pet} = await PetForm.findById(request.params)
-  
-//   if (!pet) {
-//     return response.status(422).json({ error: 'Cannot find pet' })
-//   } else {
-//   try {
-//     if (user.postLikes.includes(pet)){
-//       Toast.error('Pet already in your likes')
-//     } else {
-//       const result = await user.updateOne({
-//         $push: {likes: pet._id}
-//       }) 
-//       response.json(result)
-//     }
-//   } catch(err) {
-//     return response.status(422).json({ error: err})
-//   }
-// }})
-
-  
-//   router.get("/", (req, res) => {
-//     res.status(200).send("petform endpoint");
-//   })})
+router.get("/likes", async (request, response, next) => {
+  const userId = request.body.user
+  const user = await User.findById(userId)
+  try{
+    console.log(user)
+    response.json(user.postLikes)
+} catch (err) {
+  next(err)
+}});
 
     module.exports = router;

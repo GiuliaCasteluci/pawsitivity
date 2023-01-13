@@ -23,9 +23,9 @@ const userSchema = new mongoose.Schema({
       ref: 'Post',
     },
   ],
-  postLikes: [{
-    type: String,
-  }]
+  postLikes: {
+    type: Array,
+  }
 })
 
 const User = mongoose.model('User', userSchema)

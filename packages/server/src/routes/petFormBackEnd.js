@@ -83,7 +83,7 @@ router.patch("/:id", async (request, response, next) => {
       request.body,
       {
         new: true,
-        // runValidators: true,
+        runValidators: true,
       }
     );
     console.log(updated);

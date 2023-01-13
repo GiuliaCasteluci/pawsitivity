@@ -36,14 +36,6 @@ function SwipePage() {
             });
       }, []);
 
-      // useEffect(() => {
-      //   console.log('hello')
-      //   axios.get(`http://localhost:3001/api/pets`).then((response) => {
-      //   console.log('yurrr')  
-      //   setPets(response.data);
-          
-      //   });
-      // }, []);      
   return (
 
     <span className="page ">
@@ -60,30 +52,32 @@ function SwipePage() {
             slide={false}
             onSlid={(index, direction)=> {
               if(direction === 'start' && index === 0){
-                // try{
-                //   axios.put(`http://localhost:3001/api/like/${pets[pets.length-1]._id}/${user.uid}`)
-                // } catch (error) {
-                //   console.log(error)
-                //   return error
-                // }             
-                // setPets(pets.filter(pet => pet._id !== pets[pets.length-1]._id))
+                try{
+                  let schema = {
+                    user: user.uid,
+                    pet: pets[index-1]._id,
+                  }
+                  axios.patch(`http://localhost:3001/api/like/${pets[index-1]._id}`, schema)
+                } catch (error) {
+                  console.log(error)
+                  return error
+                }  
                 toast.success(`${pets[pets.length-1].name} was added to likes`)
               } else if(direction === 'end' && index === (pets.length-1)){
                 console.log(0)
                 setPets(pets.filter(pet => pet._id !== pets[0]._id))
                 toast.error(`${pets[0].name} was disliked`)
               } else if(direction === 'start'){
-                console.log(pets[index-1]._id)
-                // try{
-                //   let schema = {
-                //     user: user.uid,
-                //     pet: pets[index-1]._id,
-                //   }
-                //   axios.put(`http://localhost:3001/api/like/${pets[index-1]._id}`, schema)
-                // } catch (error) {
-                //   console.log(error)
-                //   return error
-                // }        
+                try{
+                  let schema = {
+                    user: user.uid,
+                    pet: pets[index-1]._id,
+                  }
+                  axios.patch(`http://localhost:3001/api/like/${pets[index-1]._id}`, schema)
+                } catch (error) {
+                  console.log(error)
+                  return error
+                }        
                 // setPets(pets.filter(pet => pet._id !== pets[index-1]._id))
                 toast.success(`${pets[index-1].name} was added to likes`)
               } else if(direction === 'end'){

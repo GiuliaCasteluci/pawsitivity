@@ -11,17 +11,17 @@ import { API_URL } from "../../../constants";
 import { useProvideAuth } from "../../../hooks/useAuth";
 
 function LikesPage() {
-  const [type, setType] = useState(null)
-  const [likes, setArray] = useState([])
   const [pets, setPets] = useState([])
     const {
     state: { user },
   } = useProvideAuth()
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/pets").then((response) => {
+console.log(user)
+
+useEffect(() => {
+      axios.get(`http://localhost:3001/api/like/likes`).then((response) => {
       setPets(response.data);
-    });
+    })
   }, []);
 
   return (
