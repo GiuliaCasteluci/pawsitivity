@@ -26,6 +26,7 @@ function EditPet({ onHide, pet, updatePet, ...props}) {
   const ageInput = useRef();
   const genderInput = useRef();
   const descriptionInput = useRef();
+  const imageInput = useRef();
 
   function handleChange(event) {
     const { name, value, files } = event.target;

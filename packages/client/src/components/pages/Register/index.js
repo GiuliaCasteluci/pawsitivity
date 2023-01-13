@@ -14,10 +14,11 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  color: #f03d4e;
+  // color: #f03d4e;
   border: 1px solid rgba(245, 245, 245, 0.7);
 `;
 
+//content inside register form
 const Content = styled.div`
   gap: 15px;
   display: flex;
@@ -32,12 +33,14 @@ const Content = styled.div`
   width: 100%;
 `;
 
+//register title
 const Label = styled.label`
   width: 100%;
   padding: 1.3rem;
   display: flex;
   flex-direction: column;
-  border: 10px solid rgba(245, 245, 245, 0.7);
+  font-size: 2rem;
+  color: #ff4c68;
 `;
 
 const LabelSignin = styled.label`
@@ -177,7 +180,7 @@ const Register = () => {
           type="password"
           name="passwordConfirmation"
           required
-          placeholder="Type your password"
+          placeholder="Confirm your password"
           id="inputPasswordConfirmationRegister"
           onChange={handleInputChange}
         />
@@ -185,12 +188,12 @@ const Register = () => {
         <LabelError>{error}</LabelError>
         <Button Text="register" onClick={handleSubmit}>
           {" "}
-          submit{" "}
+          Submit{" "}
         </Button>
         <LabelSignin>
-          already signed up?
+          Already signed up?
           <Strong>
-            <Link to="/register">&nbsp;enter</Link>
+            <Link to="/login">&nbsp;Sign in</Link>
           </Strong>
         </LabelSignin>
       </Content>

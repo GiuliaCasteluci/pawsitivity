@@ -24,7 +24,7 @@ return (
 <i class="social-icon fab fa-instagram" style={{cursor: 'pointer'}}></i>
 <i class="social-icon fas fa-envelope" style={{cursor: 'pointer'}}></i>
 
-  <p class="text-center" style={textColor}>
+  <p class="text-center-footer" style={textColor}>
     © Copyright 2023 Pawsitivity
   </p>
 </footer>
