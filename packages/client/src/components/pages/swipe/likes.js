@@ -29,6 +29,7 @@ useEffect(() => {
 
     <span className="page">
       <ToastContainer></ToastContainer>
+      <h1 className="emergency-page-h2" style={{width: '100vw'}}>Liked Pets</h1>
       <div className="mt-5">
         <Container className="d-flex flex-wrap">
         {pets.map(pet => (

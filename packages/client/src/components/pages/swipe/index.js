@@ -41,6 +41,7 @@ console.log(user)
 
     <span className="page ">
       <ToastContainer></ToastContainer>
+      <h1 className="emergency-page-h2">Pet Swipe</h1>
         <Container>
             {
             pets.length >= 2 ? 

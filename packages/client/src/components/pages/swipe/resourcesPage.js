@@ -10,7 +10,7 @@ let helpLink = 'https://www.humanesociety.org/resources/are-you-having-trouble-a
 function ResourcePage() {
   return (
     <span className="">
-      <h1 className="ps-3 mt-4 m-auto" style={{color: 'rgb(239, 129, 114)'}}>Pet Care</h1>
+      <h1 className="emergency-page-h2" style={{width: '100vw'}}>Pet Care</h1>
       <Carousel className="mb-5 m-auto"  style={{marginTop: '-3vh'}}variant="dark">
         <Carousel.Item style={{height: '500px'}}>
           <img
