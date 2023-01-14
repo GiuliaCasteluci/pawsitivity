@@ -47,7 +47,7 @@ const EmergencyPage = ({ pet }) => {
               id="uploaded-image"
               className="my-image"
               variant="top"
-              src={`http://localhost:3001/${image}`}
+              src={`44.203.184.240/${image}`}
               alt="pet-image"
             />
             <Card.Body className="my-card-body">
