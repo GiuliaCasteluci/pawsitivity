@@ -21,7 +21,7 @@ function SwipePage() {
   console.log(user);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/like")
+      .get(`${API_URL}/like`)
       .then((response) => {
         if (response.status === 200 && response.data) {
           setPets(response.data);
@@ -66,7 +66,7 @@ function SwipePage() {
                     pet: pets[index - 1]._id,
                   };
                   axios.patch(
-                    `http://localhost:3001/api/like/${pets[index - 1]._id}`,
+                    `${API_URL}/like/${pets[index - 1]._id}`,
                     schema
                   );
                 } catch (error) {
@@ -86,7 +86,7 @@ function SwipePage() {
                     pet: pets[index - 1]._id,
                   };
                   axios.patch(
-                    `http://localhost:3001/api/like/${pets[index - 1]._id}`,
+                    `${API_URL}/like/${pets[index - 1]._id}`,
                     schema
                   );
                 } catch (error) {

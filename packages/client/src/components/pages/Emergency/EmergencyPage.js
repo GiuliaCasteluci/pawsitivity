@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { API_URL } from "../../../constants";
-import { useProvideAuth, useAuth } from "../../../hooks/useAuth";
+import { useProvideAuth } from "../../../hooks/useAuth";
 import { useRequireAuth } from "../../../hooks/useRequireAuth";
 
 const EmergencyPage = ({ pet }) => {
@@ -31,7 +31,7 @@ const EmergencyPage = ({ pet }) => {
 
   return (
     <div>
-      <h1 className="emergency-page-h2">Available Pets</h1>
+      <h1 className="emergency-page-h2">Emergency Page</h1>
       <Link to="/petform" className="btn btn-primary return-petform">
         Add another pet
       </Link>
@@ -63,15 +63,17 @@ const EmergencyPage = ({ pet }) => {
                     See Profile
                   </Button>
                 </Link>
-
                 <Dropdown>
                   <Dropdown.Toggle
                     style={{ background: "transparent", border: "none" }}
                     id="dropdown-basic"
                   >
-                    <img style={{marginLeft: '15px'}} src={deleteImg} alt="Delete icon" />
+                    <img
+                      style={{ marginLeft: "15px" }}
+                      src={deleteImg}
+                      alt="Delete icon"
+                    />
                   </Dropdown.Toggle>
-
                   <Dropdown.Menu>
                     <Dropdown.Item onClick={() => handleDelete(_id)}>
                       Delete Pet
