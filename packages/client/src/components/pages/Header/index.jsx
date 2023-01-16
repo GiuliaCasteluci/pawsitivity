@@ -5,8 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {NavDropdown} from 'react-bootstrap' 
 import { useProvideAuth } from "../../../hooks/useAuth";
-
-const HeaderContainer = styled.header``;
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 function Header() {
   const {
@@ -16,13 +15,13 @@ function Header() {
 
   if (!user) {
     return (
-      <HeaderContainer>
-        <>
-        <Navbar>
+        <Navbar expand='md'  className="p-3" variant="dark">
           <Container>
-            <Navbar.Brand as={Link} to="/homePage">
+            <Navbar.Brand as={Link} style={{fontSize: 'xx-large'}} to="/homePage">
               Pawsitivity
             </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+            <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/login">
                 Sign In
@@ -32,42 +31,44 @@ function Header() {
                 Register
               </Nav.Link>
             </Nav>
+            </Navbar.Collapse>
           </Container>
         </Navbar>
-        </>
-      </HeaderContainer>
     );
   }
   return (
-    <HeaderContainer>
-        <Navbar className="p-3">
-            <Navbar.Brand as={Link} to="/homePage">
+        <Navbar expand='md'  className="p-3" variant="dark">
+          <Container>
+            <Navbar.Brand as={Link} style={{fontSize: 'xx-large'}} to="/homePage">
               Pawsitivity
             </Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/petForm">
-                Surrender
+             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+            <Navbar.Collapse id="responsive-navbar-nav">  
+              <Nav className="me-auto">
+                <Nav.Link as={Link} to="/petForm">
+                  Surrender
+                </Nav.Link>
+                <NavDropdown title="Adoption" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className="text-center" to="/adopt">
+                  Pet Tinder
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className="text-center" to="/emergency">Available Pets</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className="text-center" to="/likes">
+                  Liked Pets
+                </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Resources" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className="text-center" to="/resources">Pet Care</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className="text-center" to="/aboutUs">About Us</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className="text-center" to="/Chat">Chat</NavDropdown.Item>
+            </NavDropdown>
+              </Nav>
+              <Nav.Link variant="outline-info" className="" onClick={() => signout()}>
+                Sign Out
               </Nav.Link>
-              <NavDropdown title="Adoption" id="navbarScrollingDropdown">
-              <NavDropdown.Item as={Link} className="text-center" to="/adopt">
-                Pet Tinder
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} className="text-center" to="/emergency">Available Pets</NavDropdown.Item>
-              <NavDropdown.Item as={Link} className="text-center" to="/likes">
-                Liked Pets
-              </NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="Resources" id="navbarScrollingDropdown">
-              <NavDropdown.Item as={Link} className="text-center" to="/resources">Pet Care</NavDropdown.Item>
-              <NavDropdown.Item as={Link} className="text-center" to="/aboutUs">About Us</NavDropdown.Item>
-              <NavDropdown.Item as={Link} className="text-center" to="/Chat">Chat</NavDropdown.Item>
-          </NavDropdown>
-            </Nav>
-            <Nav.Link variant="outline-info" onClick={() => signout()}>
-              Sign Out
-            </Nav.Link>
+              </Navbar.Collapse>
+            </Container>
         </Navbar>
-    </HeaderContainer>
   );
 }
 
